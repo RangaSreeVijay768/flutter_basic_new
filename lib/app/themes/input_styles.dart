@@ -6,16 +6,20 @@ import 'edge_insets.dart';
 abstract class InputStyles {
   static InputDecoration formTemplateInput({String? hintText}) {
     return InputDecoration(
-      hintText: hintText, // Accept hintText as a parameter
+      hintText: hintText,
+      hintStyle: TextStyle(
+        overflow: TextOverflow.clip
+      ),
       filled: true,
-      fillColor: AppColors.white,
-      contentPadding: edge_insets_x_8,
+      fillColor: AppColors.white09,
+      contentPadding: EdgeInsets.symmetric(vertical: 6.0, horizontal: 6.0), // Reduced vertical padding
       border: OutlineInputBorder(
         borderSide: BorderSide(color: AppColors.rainbow2, width: 1),
       ),
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.grey4, width: 1),
+        borderSide: BorderSide(color: AppColors.bgPrimary, width: 1),
       ),
+      isDense: true,
     );
   }
 }

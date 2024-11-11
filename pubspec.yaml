@@ -55,6 +55,20 @@ dependencies:
   shared_preferences: ^2.3.2
   build_runner: ^2.4.13
   hydrated_bloc: ^9.1.5
+  dropdown_button2: ^2.3.9
+#  flutter_libserialport: ^0.4.0
+#  flutter_libserialport:
+#    git:
+#      url: https://github.com/snabble/flutter_libserialport.git
+#      ref: 0.5.0
+#  usb_serial: ^0.5.2
+  usb_serial:
+    git:
+      url: https://github.com/jymden/usbserial.git
+      ref: master
+  bluetooth_print: ^4.3.0
+  uuid: ^4.5.1
+  flutter_layout_grid: ^2.0.7
 
 dev_dependencies:
   injectable_generator: ^2.6.2

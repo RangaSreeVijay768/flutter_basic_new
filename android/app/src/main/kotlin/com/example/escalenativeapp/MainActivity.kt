@@ -1,4 +1,4 @@
-package com.example.escalenative
+package com.example.escalenativeapp
 
 import io.flutter.embedding.android.FlutterActivity
 
