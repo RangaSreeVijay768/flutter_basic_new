@@ -14,7 +14,7 @@ class ElectronicScaleApp extends StatefulWidget {
 class _ElectronicScaleAppState extends State<ElectronicScaleApp> {
   UsbPort? _port;
   String _status = "Idle";
-  String _weight = "0.0";
+  String _weight = "0";
 
   StreamSubscription<String>? _subscription;
   Transaction<String>? _transaction;
@@ -76,7 +76,11 @@ class _ElectronicScaleAppState extends State<ElectronicScaleApp> {
 
     _subscription = _transaction!.stream.listen((String line) {
       setState(() {
-        _weight = line;
+        final formattedLine = line.replaceAll(RegExp(r'[^\d.]'), '');
+
+        final weight = double.tryParse(formattedLine) ?? 0.0;
+
+        _weight = (weight*10).toStringAsFixed(2);
       });
     });
 
@@ -128,8 +132,12 @@ class _ElectronicScaleAppState extends State<ElectronicScaleApp> {
           children: <Widget>[
             Text("Status: $_status", style: TextStyle(fontSize: 18)),
             SizedBox(height: 20),
-            Text("Weight: ${double.parse(_weight) * 10} kg", style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
-            Text("Weight: ${(double.parse(_weight) * 10).toStringAsFixed(0)} kg", style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
+            Text(
+              "Weight: ${_weight.length >= 6 ? _weight.substring(1, 6) : _weight} kg",
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
+            // Text("Weight: $_weight kg", style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
+            // Text("Weight: ${(_weight.substring(1, 6))} kg", style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
           ],
         ),
       ),

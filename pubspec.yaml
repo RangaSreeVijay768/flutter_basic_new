@@ -52,7 +52,7 @@ dependencies:
   retrofit: ^4.4.1
   reactive_forms: ^17.0.1
   url_launcher: ^6.3.1
-  shared_preferences: ^2.3.2
+  shared_preferences: ^2.3.3
   build_runner: ^2.4.13
   hydrated_bloc: ^9.1.5
   dropdown_button2: ^2.3.9

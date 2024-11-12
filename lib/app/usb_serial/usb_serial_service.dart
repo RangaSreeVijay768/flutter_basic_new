@@ -18,12 +18,12 @@ class UsbSerialService {
   Transaction<String>? _transaction;
   UsbDevice? _device;
 
-  final StreamController<double> _weightController = StreamController<double>.broadcast();
+  StreamController<double>? _weightController; // Use a nullable StreamController
 
   String get status => _status;
   String get weight => _weight;
 
-  Stream<double> get weightStream => _weightController.stream;
+  Stream<double> get weightStream => _weightController!.stream;
 
   Future<void> _connectTo(UsbDevice? device) async {
     if (_subscription != null) {
@@ -38,6 +38,10 @@ class UsbSerialService {
       await _port!.close();
       _port = null;
     }
+
+    // Reset and reopen the weight controller
+    _weightController?.close();  // Close existing controller if open
+    _weightController = StreamController<double>.broadcast();
 
     if (device == null) {
       _device = null;
@@ -63,25 +67,26 @@ class UsbSerialService {
     );
 
     _subscription = _transaction!.stream.listen((String line) {
-      _weight = line;
-      _weightController.add(double.parse(_weight) * 10);
+      final formattedLine = line.replaceAll(RegExp(r'[^\d.]'), '');
+
+      final weight = double.tryParse(formattedLine) ?? 0.0;
+
+      _weight = (weight * 10).toStringAsFixed(2);
+      _weightController!.add(weight * 10);  // Emit weight on controller
     });
 
     _status = "Connected";
   }
 
-  // Connect to the first available USB device
   Future<void> connect() async {
-    logger.d("scanning");
-    await disconnect();
-    logger.d("disconnecting");
+    logger.d("Scanning for devices...");
+    await disconnect();  // Ensure we start with a fresh connection
     List<UsbDevice> devices = await UsbSerial.listDevices();
-    logger.d("connecting");
     if (devices.isNotEmpty) {
       await _connectTo(devices.first);
-      ShowToast.toast("connected to scale", Colors.greenAccent);
+      ShowToast.toast("Connected to scale", Colors.greenAccent);
     } else {
-      logger.d("no devices");
+      logger.d("No devices found");
       _status = "No USB devices found";
       ShowToast.toast(_status, Colors.redAccent);
     }
@@ -89,7 +94,5 @@ class UsbSerialService {
 
   Future<void> disconnect() async {
     await _connectTo(null);
-    await _weightController.close();
   }
-
 }

@@ -1,12 +1,8 @@
 import 'package:basic/app/bluetooth/utils/bluetooth_utils.dart';
 import 'package:basic/app/bluetooth/widgets/bluetooth_print_print_receipt/bluetooth_print_print_receipt_controller.dart';
-import 'package:basic/app/core/api_url/api_url.dart';
-import 'package:basic/app/core/utils/bluetooth_receipt/bluetooth_receipt_utils.dart';
 import 'package:basic/app/escale/models/truck_models.dart';
 import 'package:basic/app/escale/widgets/get_transactions_by_customer_id/get_transactions_by_customer_id.dart';
 import 'package:basic/app/escale/widgets/get_transactions_by_customer_id/get_transactions_by_customer_id_controller.dart';
-import 'package:basic/app/escale/widgets/get_transactions_by_truck_customer/get_transactions_by_truck_customer_controller.dart';
-import 'package:basic/app/escale/widgets/recieve_graphs/recieve_graphs.dart';
 import 'package:basic/app/escale/widgets/trucks_dropdown/trucks_dropdown.dart';
 import 'package:basic/app/themes/borders.dart';
 import 'package:basic/app/themes/input_styles.dart';
@@ -24,10 +20,9 @@ import '../../../bluetooth/widgets/bluetooth_print_print_receipt/bluetooth_print
 import '../../../core/database/boolean_status.dart';
 import '../../../core/logger/log.dart';
 import '../../../core/services/usb_serial.dart';
+import '../../../core/utils/bluetooth_receipt/bluetooth_receipt_utils.dart';
 import '../../models/customer_models.dart';
 import '../customer_dropdown/customer_dropdown.dart';
-import '../get_all_customers/get_all_customers.dart';
-import '../get_all_trucks/get_all_trucks.dart';
 import '../get_transactions_by_truck_customer/get_transactions_by_truck_customer.dart';
 import '../items_dropdown/items_dropdown.dart';
 import '../sell_template_purchase_type/sell_template_purchase_type.dart';
@@ -285,8 +280,7 @@ class SellFormTemplate extends BaseStatelessWidget<SellFormTemplateController,
                                         border: borders.b_1px_bgPrimary,
                                         color: AppColors.white09
                                       ),
-                                      child: Text(snapshot.data!
-                                          .toString().substring(0, 2), style: TextStyle(fontSize: Fonts.fontSize16),),
+                                      child: Text(snapshot.data!.toStringAsFixed(2), style: TextStyle(fontSize: Fonts.fontSize16),),
                                     );
                                   } else {
                                     return Container(
