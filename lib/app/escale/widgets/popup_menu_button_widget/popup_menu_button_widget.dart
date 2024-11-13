@@ -1,5 +1,6 @@
 import 'package:basic/app/core/api_url/api_url.dart';
 import 'package:basic/app/core/services/usb_serial.dart';
+import 'package:basic/app/escale/screens/bluetooth_printer_screen/bluetooth_printer_screen.dart';
 import 'package:basic/app/escale/screens/escale_weight_screen/escale_weight_screen.dart';
 import 'package:basic/app/escale/screens/escale_weight_screen/escale_weight_screen2.dart';
 import 'package:basic/app/themes/borders.dart';
@@ -66,9 +67,9 @@ class PopupMenuButtonWidget
                   },
                 ),
                 PopupMenuItem(
-                  child: Text("Escale2"),
+                  child: Text("Printer"),
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ElectronicScaleApp()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => BluetoothPrinterScreen()));
                   },
                 ),
                 PopupMenuItem(

@@ -1,7 +1,14 @@
+import 'dart:ui';
+
+import 'package:basic/app/bluetooth/state/bluetooth_cubit.dart';
+import 'package:basic/app/bluetooth/widgets/bluetooth_print_connect_device/bluetooth_print_connect_device.dart';
+import 'package:basic/app/bluetooth/widgets/bluetooth_print_connect_device/bluetooth_print_connect_device_cubit.dart';
+import 'package:basic/app/core/controllers/base_controller.dart';
 import 'package:basic/app/escale/request_response/get_all_customers/get_all_customers_response.dart';
 import 'package:basic/app/escale/request_response/get_all_trucks/get_all_trucks_response.dart';
 import 'package:basic/app/escale/widgets/get_all_transactions/get_all_transactions_cubit.dart';
 import 'package:basic/app/escale/widgets/sell_form_template/sell_form_template_cubit.dart';
+import 'package:basic/app/escale/widgets/sell_screen_template/sell_screen_template_cubit.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:basic/app/core/blocs/base_cubit.dart';
@@ -9,10 +16,12 @@ import 'package:basic/app/core/database/boolean_status.dart';
 
 import 'package:get_it/get_it.dart';
 
+import '../../../themes/app_colors.dart';
 import '../../request_response/get_all_customers/get_all_customers_request.dart';
 import '../../request_response/get_all_trucks/get_all_trucks_request.dart';
 import '../../services/customer_service.dart';
 import '../../services/truck_service.dart';
+import '../../widgets/sell_form_template/sell_form_template_controller.dart';
 
 part 'sell_screen_state.dart';
 
@@ -28,6 +37,13 @@ class SellScreenCubit extends BaseCubit<SellScreenState> {
     customerService = GetIt.instance<CustomerService>();
     getAllTrucks(createRequestDataTrucks());
     getAllCustomers(createRequestDataCustomers());
+  }
+
+  addNewControllerWithColor(BaseController controller, List controllers, Map controllerColors) {
+    var newController = controller;
+    Color assignedColor = AppColors.formTemplateColors[controllers.length % AppColors.formTemplateColors.length];
+    controllers.add(newController);
+    controllerColors[newController] = assignedColor;
   }
 
   setLoadingButtonStatus(bool? val) {

@@ -12,8 +12,8 @@ GetTransactionsByCustomerIdResponse
           ..customerid = (json['customerid'] as num?)?.toInt()
           ..truckid = (json['truckid'] as num?)?.toInt()
           ..items = json['items'] as String?
-          ..totalBags = json['total_bags'] as String?
-          ..totalWeight = (json['total_weight'] as num?)?.toInt()
+          ..totalBags = json['totalBags'] as String?
+          ..totalWeight = (json['totalWeight'] as num?)?.toInt()
           ..cost = (json['cost'] as num?)?.toInt();
 
 Map<String, dynamic> _$GetTransactionsByCustomerIdResponseToJson(
@@ -22,7 +22,7 @@ Map<String, dynamic> _$GetTransactionsByCustomerIdResponseToJson(
       'customerid': instance.customerid,
       'truckid': instance.truckid,
       'items': instance.items,
-      'total_bags': instance.totalBags,
-      'total_weight': instance.totalWeight,
+      'totalBags': instance.totalBags,
+      'totalWeight': instance.totalWeight,
       'cost': instance.cost,
     };

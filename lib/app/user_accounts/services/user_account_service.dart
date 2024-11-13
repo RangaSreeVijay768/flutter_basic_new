@@ -26,7 +26,7 @@ class UserAccountService {
   Future<bool> saveUserAuthTokenToSharedPreference(
       UserAccount userAccount) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    logger.d(userAccount.toJson());
+    // logger.d(userAccount.toJson());
     return sharedPreferences.setString(
         "user", jsonEncode(userAccount.toJson()));
   }

@@ -44,383 +44,348 @@ class HomeScreenDrawerWidget extends BaseStatelessWidget<
             width: largeScreen
                 ? 300
                 : MediaQuery.sizeOf(context).width / 1.3,
-            child: SingleChildScrollView(
-              child: Container(
-                margin: edge_insets_x_16,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: edge_insets_t_16,
-                      margin: edge_insets_y_16,
-                      child: IconButton(
-                        style: IconButton.styleFrom(
-                            backgroundColor: AppColors.grey2),
-                        onPressed: () {
-                          context.pop();
-                        },
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: AppColors.textHeading,
+            child: Container(
+              height: MediaQuery.sizeOf(context).height,
+              margin: edge_insets_x_16,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        padding: edge_insets_t_16,
+                        margin: edge_insets_y_16,
+                        child: IconButton(
+                          style: IconButton.styleFrom(
+                              backgroundColor: AppColors.grey2),
+                          onPressed: () {
+                            context.pop();
+                          },
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: AppColors.textHeading,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Container(
-                      decoration:
-                      const BoxDecoration(boxShadow: [shadows.bs_grey]),
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: TextButton(
-                                style: Buttons.sideMenuButton,
-                                onPressed: () {
-                                  context.go('/home');
-                                },
-                                child: const Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Icon(
-                                      Icons.home_sharp,
-                                      color: AppColors.textHeading,
-                                    ),
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Text(
-                                      "Home",
-                                      style: TextStyle(
-                                          color: AppColors.textHeading,
-                                          fontSize: Fonts.fontSize16,
-                                          fontWeight: Fonts.f400),
-                                    )
-                                  ],
-                                ),
-                              ))
-                        ],
+                      SizedBox(
+                        height: 16,
                       ),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Container(
-                      decoration:
-                      const BoxDecoration(boxShadow: [shadows.bs_grey]),
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: TextButton(
-                                style: Buttons.sideMenuButton,
-                                onPressed: () {
-                                  context.go('/receive');
-                                },
-                                child: const Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Icon(
-                                      Icons.fire_truck,
-                                      color: AppColors.textHeading,
-                                    ),
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Text(
-                                      "Receive",
-                                      style: TextStyle(
-                                          color: AppColors.textHeading,
-                                          fontSize: Fonts.fontSize16,
-                                          fontWeight: Fonts.f400),
-                                    )
-                                  ],
-                                ),
-                              ))
-                        ],
+                      Container(
+                        decoration:
+                        const BoxDecoration(boxShadow: [shadows.bs_grey]),
+                        child: Row(
+                          children: [
+                            Expanded(
+                                child: TextButton(
+                                  style: Buttons.sideMenuButton,
+                                  onPressed: () {
+                                    context.go('/home');
+                                  },
+                                  child: const Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 16,
+                                      ),
+                                      Icon(
+                                        Icons.home_sharp,
+                                        color: AppColors.textHeading,
+                                      ),
+                                      SizedBox(
+                                        width: 16,
+                                      ),
+                                      Text(
+                                        "Home",
+                                        style: TextStyle(
+                                            color: AppColors.textHeading,
+                                            fontSize: Fonts.fontSize16,
+                                            fontWeight: Fonts.f400),
+                                      )
+                                    ],
+                                  ),
+                                ))
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Container(
-                      decoration:
-                      const BoxDecoration(boxShadow: [shadows.bs_grey]),
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: TextButton(
-                                style: Buttons.sideMenuButton,
-                                onPressed: () {
-                                  context.go('/sell');
-                                },
-                                child: const Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Icon(
-                                      Icons.shopping_cart_checkout_outlined,
-                                      color: AppColors.textHeading,
-                                    ),
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Text(
-                                      "Sell",
-                                      style: TextStyle(
-                                          color: AppColors.textHeading,
-                                          fontSize: Fonts.fontSize16,
-                                          fontWeight: Fonts.f400),
-                                    )
-                                  ],
-                                ),
-                              ))
-                        ],
+                      SizedBox(
+                        height: 16,
                       ),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Container(
-                      decoration:
-                      const BoxDecoration(boxShadow: [shadows.bs_grey]),
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: TextButton(
-                                style: Buttons.sideMenuButton,
-                                onPressed: () {
-                                  context.go('/customers');
-                                },
-                                child: const Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Icon(
-                                      Icons.person_2,
-                                      color: AppColors.textHeading,
-                                    ),
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Text(
-                                      "Customer",
-                                      style: TextStyle(
-                                          color: AppColors.textHeading,
-                                          fontSize: Fonts.fontSize16,
-                                          fontWeight: Fonts.f400),
-                                    )
-                                  ],
-                                ),
-                              ))
-                        ],
+                      Container(
+                        decoration:
+                        const BoxDecoration(boxShadow: [shadows.bs_grey]),
+                        child: Row(
+                          children: [
+                            Expanded(
+                                child: TextButton(
+                                  style: Buttons.sideMenuButton,
+                                  onPressed: () {
+                                    context.go('/receive');
+                                  },
+                                  child: const Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 16,
+                                      ),
+                                      Icon(
+                                        Icons.fire_truck,
+                                        color: AppColors.textHeading,
+                                      ),
+                                      SizedBox(
+                                        width: 16,
+                                      ),
+                                      Text(
+                                        "Receive",
+                                        style: TextStyle(
+                                            color: AppColors.textHeading,
+                                            fontSize: Fonts.fontSize16,
+                                            fontWeight: Fonts.f400),
+                                      )
+                                    ],
+                                  ),
+                                ))
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Container(
-                      decoration:
-                      const BoxDecoration(boxShadow: [shadows.bs_grey]),
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: TextButton(
-                                style: Buttons.sideMenuButton,
-                                onPressed: () {
-                                  // context.go('/adjustments');
-                                  Navigator.push(context, MaterialPageRoute(
-                                      builder: (context) => SellTemplateListPage(trucks: [], customers: [])
-                                  ));
-                                },
-                                child: const Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Icon(
-                                      Icons.money,
-                                      color: AppColors.textHeading,
-                                    ),
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Text(
-                                      "Adjustments",
-                                      style: TextStyle(
-                                          color: AppColors.textHeading,
-                                          fontSize: Fonts.fontSize16,
-                                          fontWeight: Fonts.f400),
-                                    )
-                                  ],
-                                ),
-                              ))
-                        ],
+                      SizedBox(
+                        height: 16,
                       ),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Container(
-                      decoration:
-                      const BoxDecoration(boxShadow: [shadows.bs_grey]),
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: TextButton(
-                                style: Buttons.sideMenuButton,
-                                onPressed: () {
-                                  context.go('/report');
-                                },
-                                child: const Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Icon(
-                                      Icons.note_alt_sharp,
-                                      color: AppColors.textHeading,
-                                    ),
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Text(
-                                      "Report",
-                                      style: TextStyle(
-                                          color: AppColors.textHeading,
-                                          fontSize: Fonts.fontSize16,
-                                          fontWeight: Fonts.f400),
-                                    )
-                                  ],
-                                ),
-                              ))
-                        ],
+                      Container(
+                        decoration:
+                        const BoxDecoration(boxShadow: [shadows.bs_grey]),
+                        child: Row(
+                          children: [
+                            Expanded(
+                                child: TextButton(
+                                  style: Buttons.sideMenuButton,
+                                  onPressed: () {
+                                    context.go('/sell');
+                                  },
+                                  child: const Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 16,
+                                      ),
+                                      Icon(
+                                        Icons.shopping_cart_checkout_outlined,
+                                        color: AppColors.textHeading,
+                                      ),
+                                      SizedBox(
+                                        width: 16,
+                                      ),
+                                      Text(
+                                        "Sell",
+                                        style: TextStyle(
+                                            color: AppColors.textHeading,
+                                            fontSize: Fonts.fontSize16,
+                                            fontWeight: Fonts.f400),
+                                      )
+                                    ],
+                                  ),
+                                ))
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Container(
-                      decoration:
-                      const BoxDecoration(boxShadow: [shadows.bs_grey]),
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: TextButton(
-                                style: Buttons.sideMenuButton,
-                                onPressed: () {
-                                  context.go('/receipt');
-                                },
-                                child: const Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Icon(
-                                      Icons.receipt,
-                                      color: AppColors.textHeading,
-                                    ),
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Text(
-                                      "Receipt",
-                                      style: TextStyle(
-                                          color: AppColors.textHeading,
-                                          fontSize: Fonts.fontSize16,
-                                          fontWeight: Fonts.f400),
-                                    )
-                                  ],
-                                ),
-                              ))
-                        ],
+                      SizedBox(
+                        height: 16,
                       ),
+                      // Container(
+                      //   decoration:
+                      //   const BoxDecoration(boxShadow: [shadows.bs_grey]),
+                      //   child: Row(
+                      //     children: [
+                      //       Expanded(
+                      //           child: TextButton(
+                      //             style: Buttons.sideMenuButton,
+                      //             onPressed: () {
+                      //               context.go('/customers');
+                      //             },
+                      //             child: const Row(
+                      //               children: [
+                      //                 SizedBox(
+                      //                   width: 16,
+                      //                 ),
+                      //                 Icon(
+                      //                   Icons.person_2,
+                      //                   color: AppColors.textHeading,
+                      //                 ),
+                      //                 SizedBox(
+                      //                   width: 16,
+                      //                 ),
+                      //                 Text(
+                      //                   "Customer",
+                      //                   style: TextStyle(
+                      //                       color: AppColors.textHeading,
+                      //                       fontSize: Fonts.fontSize16,
+                      //                       fontWeight: Fonts.f400),
+                      //                 )
+                      //               ],
+                      //             ),
+                      //           ))
+                      //     ],
+                      //   ),
+                      // ),
+                      // SizedBox(
+                      //   height: 16,
+                      // ),
+                      // Container(
+                      //   decoration:
+                      //   const BoxDecoration(boxShadow: [shadows.bs_grey]),
+                      //   child: Row(
+                      //     children: [
+                      //       Expanded(
+                      //           child: TextButton(
+                      //             style: Buttons.sideMenuButton,
+                      //             onPressed: () {
+                      //               // context.go('/adjustments');
+                      //               Navigator.push(context, MaterialPageRoute(
+                      //                   builder: (context) => SellTemplateListPage(trucks: [], customers: [])
+                      //               ));
+                      //             },
+                      //             child: const Row(
+                      //               children: [
+                      //                 SizedBox(
+                      //                   width: 16,
+                      //                 ),
+                      //                 Icon(
+                      //                   Icons.money,
+                      //                   color: AppColors.textHeading,
+                      //                 ),
+                      //                 SizedBox(
+                      //                   width: 16,
+                      //                 ),
+                      //                 Text(
+                      //                   "Adjustments",
+                      //                   style: TextStyle(
+                      //                       color: AppColors.textHeading,
+                      //                       fontSize: Fonts.fontSize16,
+                      //                       fontWeight: Fonts.f400),
+                      //                 )
+                      //               ],
+                      //             ),
+                      //           ))
+                      //     ],
+                      //   ),
+                      // ),
+                      // SizedBox(
+                      //   height: 16,
+                      // ),
+                      // Container(
+                      //   decoration:
+                      //   const BoxDecoration(boxShadow: [shadows.bs_grey]),
+                      //   child: Row(
+                      //     children: [
+                      //       Expanded(
+                      //           child: TextButton(
+                      //             style: Buttons.sideMenuButton,
+                      //             onPressed: () {
+                      //               context.go('/report');
+                      //             },
+                      //             child: const Row(
+                      //               children: [
+                      //                 SizedBox(
+                      //                   width: 16,
+                      //                 ),
+                      //                 Icon(
+                      //                   Icons.note_alt_sharp,
+                      //                   color: AppColors.textHeading,
+                      //                 ),
+                      //                 SizedBox(
+                      //                   width: 16,
+                      //                 ),
+                      //                 Text(
+                      //                   "Report",
+                      //                   style: TextStyle(
+                      //                       color: AppColors.textHeading,
+                      //                       fontSize: Fonts.fontSize16,
+                      //                       fontWeight: Fonts.f400),
+                      //                 )
+                      //               ],
+                      //             ),
+                      //           ))
+                      //     ],
+                      //   ),
+                      // ),
+                      // SizedBox(
+                      //   height: 16,
+                      // ),
+                      // Container(
+                      //   decoration:
+                      //   const BoxDecoration(boxShadow: [shadows.bs_grey]),
+                      //   child: Row(
+                      //     children: [
+                      //       Expanded(
+                      //           child: TextButton(
+                      //             style: Buttons.sideMenuButton,
+                      //             onPressed: () {
+                      //               context.go('/settings');
+                      //             },
+                      //             child: const Row(
+                      //               children: [
+                      //                 SizedBox(
+                      //                   width: 16,
+                      //                 ),
+                      //                 Icon(
+                      //                   Icons.settings,
+                      //                   color: AppColors.textHeading,
+                      //                 ),
+                      //                 SizedBox(
+                      //                   width: 16,
+                      //                 ),
+                      //                 Text(
+                      //                   "Settings",
+                      //                   style: TextStyle(
+                      //                       color: AppColors.textHeading,
+                      //                       fontSize: Fonts.fontSize16,
+                      //                       fontWeight: Fonts.f400),
+                      //                 )
+                      //               ],
+                      //             ),
+                      //           ))
+                      //     ],
+                      //   ),
+                      // ),
+                    ],
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(boxShadow: [shadows.bs_grey]),
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child: TextButton(
+                              style: Buttons.sideMenuButton,
+                              onPressed: () {
+                                getCubit(context).logout();
+                                context.go('/welcome');
+                              },
+                              child: const Row(
+                                children: [
+                                  SizedBox(
+                                    width: 16,
+                                  ),
+                                  Icon(
+                                    Icons.logout,
+                                    color: AppColors.textHeading,
+                                  ),
+                                  SizedBox(
+                                    width: 16,
+                                  ),
+                                  Text(
+                                    "Logout",
+                                    style: TextStyle(
+                                        color: AppColors.textHeading,
+                                        fontSize: Fonts.fontSize16,
+                                        fontWeight: Fonts.f400),
+                                  )
+                                ],
+                              ),
+                            ))
+                      ],
                     ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Container(
-                      decoration:
-                      const BoxDecoration(boxShadow: [shadows.bs_grey]),
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: TextButton(
-                                style: Buttons.sideMenuButton,
-                                onPressed: () {
-                                  context.go('/settings');
-                                },
-                                child: const Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Icon(
-                                      Icons.settings,
-                                      color: AppColors.textHeading,
-                                    ),
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Text(
-                                      "Settings",
-                                      style: TextStyle(
-                                          color: AppColors.textHeading,
-                                          fontSize: Fonts.fontSize16,
-                                          fontWeight: Fonts.f400),
-                                    )
-                                  ],
-                                ),
-                              ))
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Container(
-                      decoration: const BoxDecoration(boxShadow: [shadows.bs_grey]),
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: TextButton(
-                                style: Buttons.sideMenuButton,
-                                onPressed: () {
-                                  getCubit(context).logout();
-                                  context.go('/welcome');
-                                },
-                                child: const Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Icon(
-                                      Icons.logout,
-                                      color: AppColors.textHeading,
-                                    ),
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Text(
-                                      "Logout",
-                                      style: TextStyle(
-                                          color: AppColors.textHeading,
-                                          fontSize: Fonts.fontSize16,
-                                          fontWeight: Fonts.f400),
-                                    )
-                                  ],
-                                ),
-                              ))
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                ],
               ),
             ),
           );

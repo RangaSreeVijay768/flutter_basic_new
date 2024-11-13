@@ -1,10 +1,9 @@
-part of 'sell_screen_cubit.dart';
+part of 'sell_screen_new_cubit.dart';
 
 @freezed
-class SellScreenState with _$SellScreenState {
-  const factory SellScreenState.initial({
+class SellScreenNewState with _$SellScreenNewState {
+  const factory SellScreenNewState.initial({
     GetAllTransactionsState? getAllTransactionsState,
-    SellFormTemplateState? sellFormTemplateState,
     SellScreenTemplateState? sellScreenTemplateState,
     bool? loadingButton,
     List<GetAllTrucksResponse>? getAllTrucksResponse,
@@ -12,5 +11,5 @@ class SellScreenState with _$SellScreenState {
     List<GetAllCustomersResponse>? getAllCustomersResponse,
     @Default(BooleanStatus.initial) BooleanStatus getAllCustomersStatus,
     BluetoothPrintConnectDeviceState? bluetoothState
-}) = _Initial;
+  }) = _Initial;
 }

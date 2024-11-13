@@ -1,4 +1,5 @@
 import 'package:basic/app/core/database/boolean_status.dart';
+import 'package:basic/app/escale/request_response/get_all_trucks/get_all_trucks_response.dart';
 import 'package:basic/app/escale/widgets/create_truck_modal/create_truck_modal.dart';
 import 'package:basic/app/escale/widgets/get_all_trucks/get_all_trucks_controller.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -19,7 +20,8 @@ import 'receive_screen_cubit.dart';
 import 'package:basic/app/core/widgets/base_stateless_widget.dart';
 
 class ReceiveScreen extends BaseStatelessWidget<ReceiveScreenController,
-    ReceiveScreenCubit, ReceiveScreenState> {
+    ReceiveScreenCubit,
+    ReceiveScreenState> {
   ReceiveScreen({Key? key, super.controller, super.onStateChanged})
       : super(key: key);
   GetAllTrucksController getAllTrucksController = GetAllTrucksController();
@@ -33,7 +35,13 @@ class ReceiveScreen extends BaseStatelessWidget<ReceiveScreenController,
           if (onStateChanged != null) {
             onStateChanged!(state);
           }
-        },
+          Future<void> fetchTrucks() async {
+            List<GetAllTrucksResponse> trucks = await getAllTrucksController.getChildCubit().getAllTrucks(
+                getAllTrucksController.getChildCubit().createRequestData());
+            getCubit(context).emitState(state.copyWith(getAllTrucksResponse: trucks));
+          }
+          state.getAllTrucksResponse != null ? null : fetchTrucks();
+          },
         builder: (context, state) {
           initializeController(context);
           return AppScaffold(
@@ -41,8 +49,9 @@ class ReceiveScreen extends BaseStatelessWidget<ReceiveScreenController,
             body: Container(
               child: GetAllTrucks(
                 controller: getAllTrucksController,
-                onStateChanged: (getAllTrucksState) => getCubit(context)
-                    .emitState(
+                onStateChanged: (getAllTrucksState) =>
+                    getCubit(context)
+                        .emitState(
                         state.copyWith(getAllTrucksState: getAllTrucksState)),
               ),
             ),

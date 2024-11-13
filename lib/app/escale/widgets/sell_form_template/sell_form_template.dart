@@ -1,6 +1,7 @@
 import 'package:basic/app/bluetooth/utils/bluetooth_utils.dart';
 import 'package:basic/app/bluetooth/widgets/bluetooth_print_print_receipt/bluetooth_print_print_receipt_controller.dart';
 import 'package:basic/app/escale/models/truck_models.dart';
+import 'package:basic/app/escale/request_response/get_transactions_by_customer_id/get_transactions_by_customer_id_response.dart';
 import 'package:basic/app/escale/widgets/get_transactions_by_customer_id/get_transactions_by_customer_id.dart';
 import 'package:basic/app/escale/widgets/get_transactions_by_customer_id/get_transactions_by_customer_id_controller.dart';
 import 'package:basic/app/escale/widgets/trucks_dropdown/trucks_dropdown.dart';
@@ -49,8 +50,10 @@ class SellFormTemplate extends BaseStatelessWidget<SellFormTemplateController,
       required this.customers,
       required this.trucks})
       : super(key: key);
-  GetTransactionsByCustomerIdController getTransactionsByCustomerIdController = GetTransactionsByCustomerIdController();
-  BluetoothPrintPrintReceiptController bluetoothPrintPrintReceiptController = BluetoothPrintPrintReceiptController();
+  GetTransactionsByCustomerIdController getTransactionsByCustomerIdController =
+      GetTransactionsByCustomerIdController();
+  BluetoothPrintPrintReceiptController bluetoothPrintPrintReceiptController =
+      BluetoothPrintPrintReceiptController();
 
   @override
   Widget build(BuildContext context) {
@@ -180,8 +183,9 @@ class SellFormTemplate extends BaseStatelessWidget<SellFormTemplateController,
                                                   padding:
                                                       const EdgeInsets.all(4.0),
                                                   child: Text(
-                                                      "${state.selectedTruck!.weight} kg", style: TextStyle(
-                                                  ),),
+                                                    "${state.selectedTruck!.weight} kg",
+                                                    style: TextStyle(),
+                                                  ),
                                                 ),
                                               ),
                                               TableCell(
@@ -267,28 +271,30 @@ class SellFormTemplate extends BaseStatelessWidget<SellFormTemplateController,
                           SizedBox(width: 5),
                           usbSerialService.status == "Connected"
                               ? Expanded(
-                              child: StreamBuilder<double>(
-                                stream: usbSerialService.weightStream,
-                                // Listen to the weight stream
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasData) {
-                                    getCubit(context)
-                                        .setItemWeight(snapshot.data!);
-                                    return Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: borderRadius.br_5,
-                                        border: borders.b_1px_bgPrimary,
-                                        color: AppColors.white09
-                                      ),
-                                      child: Text(snapshot.data!.toStringAsFixed(2), style: TextStyle(fontSize: Fonts.fontSize16),),
-                                    );
-                                  } else {
-                                    return Container(
-                                        child: Text("No data"));
-                                  }
-                                },
-                              )
-                          )
+                                  child: StreamBuilder<double>(
+                                  stream: usbSerialService.weightStream,
+                                  // Listen to the weight stream
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      getCubit(context)
+                                          .setItemWeight(snapshot.data!);
+                                      return Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius: borderRadius.br_5,
+                                            border: borders.b_1px_bgPrimary,
+                                            color: AppColors.white09),
+                                        child: Text(
+                                          snapshot.data!.toStringAsFixed(0),
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: Fonts.fontSize16),
+                                        ),
+                                      );
+                                    } else {
+                                      return Container(child: Text("No data"));
+                                    }
+                                  },
+                                ))
                               : Expanded(
                                   child: TextFormField(
                                     decoration: InputStyles.formTemplateInput(
@@ -298,39 +304,54 @@ class SellFormTemplate extends BaseStatelessWidget<SellFormTemplateController,
                                         .setItemWeight(double.tryParse(value)),
                                   ),
                                 ),
-
                           BluetoothPrintPrintReceipt(
-                            controller:
-                            bluetoothPrintPrintReceiptController,
+                            controller: bluetoothPrintPrintReceiptController,
                             onStateChanged:
                                 (bluetoothPrintPrintReceiptState) {},
                           ),
-                          state.selectedCustomer != null?
-                          GetTransactionsByCustomerId(
-                            key: ValueKey(state.selectedCustomer!.id!),
-                            controller: getTransactionsByCustomerIdController,
-                              customerId: state.selectedCustomer!.id!
-                          ): SizedBox(),
+                          state.selectedCustomer != null
+                              ? Container(
+                            height: 30,
+                            child: GetTransactionsByCustomerId(
+                                key: ValueKey(state.selectedCustomer!.id!),
+                                controller:
+                                getTransactionsByCustomerIdController,
+                                customerId: state.selectedCustomer!.id!),
+                          )
+                              : SizedBox(),
                           IconButton(
                               style: IconButton.styleFrom(
                                 backgroundColor: AppColors.bgPrimary,
                               ),
-                              onPressed: (state.bluetoothState
-                                  ?.bluetoothStatus ==
-                                  BooleanStatus.pending || state.selectedCustomer == null)
-                                  ? null
-                                  : () async {
-                                await bluetoothPrintPrintReceiptController
-                                    .getChildCubit()
-                                    .printReceipt(bluetoothPrintPrintReceiptController
-                                    .getChildCubit()
-                                    .createRequestData(
-                                    data: BluetoothReceiptUtils.getPrintReceiptText(
-                                        state.selectedCustomer!.name!,
-                                        state.getTransactionsByCustomerIdResponse ?? [],
-                                        BluetoothReceiptUtils.generateBarcodeContent(state.selectedCustomer!.id!)
-                                    )));
-                              },
+                              onPressed:
+                                  (state.bluetoothState?.bluetoothStatus ==
+                                              BooleanStatus.pending ||
+                                          state.selectedCustomer == null)
+                                      ? null
+                                      : () async {
+                                          List<GetTransactionsByCustomerIdResponse> transactions = await getTransactionsByCustomerIdController
+                                              .getChildCubit()
+                                              .getTransactionsByCustomerId(
+                                                  getTransactionsByCustomerIdController
+                                                      .getChildCubit()
+                                                      .createRequestData());
+                                          logger.d(transactions);
+                                          await bluetoothPrintPrintReceiptController
+                                              .getChildCubit()
+                                              .printReceipt(bluetoothPrintPrintReceiptController
+                                                  .getChildCubit()
+                                                  .createRequestData(
+                                                      data: BluetoothReceiptUtils
+                                                          .getPrintReceiptText(
+                                                              state
+                                                                  .selectedCustomer!
+                                                                  .name!,
+                                                              transactions,
+                                                              BluetoothReceiptUtils
+                                                                  .generateBarcodeContent(state
+                                                                      .selectedCustomer!
+                                                                      .id!))));
+                                        },
                               icon: Icon(Icons.print_outlined)),
                         ],
                       ),
@@ -348,39 +369,40 @@ class SellFormTemplate extends BaseStatelessWidget<SellFormTemplateController,
                             child: Row(
                               children: [
                                 usbSerialService.status == "Connected"
-                                ? Expanded(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: borderRadius.br_5,
-                                        border: borders.b_1px_bgPrimary,
-                                        color: AppColors.white09
-                                    ),
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      '1',
-                                      style: TextStyle(fontSize: 16),
-                                    ),
-                                  ),
-                                )
-                                : Expanded(
-                                  child: TextFormField(
-                                    initialValue:
-                                    state.lotSize?.toString() ?? "",
-                                    decoration: InputStyles.formTemplateInput(
-                                      hintText: 'bags',
-                                    ),
-                                    keyboardType: TextInputType.number,
-                                    onChanged: (value) => getCubit(context)
-                                        .setLotSize(int.tryParse(value)),
-                                  ),
-                                ),
+                                    ? Expanded(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              borderRadius: borderRadius.br_5,
+                                              border: borders.b_1px_bgPrimary,
+                                              color: AppColors.white09),
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            '1',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                        ),
+                                      )
+                                    : Expanded(
+                                        child: TextFormField(
+                                          initialValue:
+                                              state.lotSize?.toString() ?? "",
+                                          decoration:
+                                              InputStyles.formTemplateInput(
+                                            hintText: 'bags',
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                          onChanged: (value) =>
+                                              getCubit(context).setLotSize(
+                                                  int.tryParse(value)),
+                                        ),
+                                      ),
                                 SizedBox(
                                   width: 5,
                                 ),
                                 Expanded(
                                   child: TextFormField(
                                     decoration: InputStyles.formTemplateInput(
-                                      hintText: 'price',
+                                      hintText: usbSerialService.weight,
                                     ),
                                     keyboardType: TextInputType.number,
                                     onChanged: (value) => getCubit(context)
@@ -420,8 +442,6 @@ class SellFormTemplate extends BaseStatelessWidget<SellFormTemplateController,
                                           getCubit(context)
                                               .createRequestData());
                                       onTransactionCreated?.call();
-                                      getCubit(context).clearFormFields();
-                                      logger.d("clear");
                                     },
                                     child: Text(
                                       "Submit",

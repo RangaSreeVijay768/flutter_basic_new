@@ -4,7 +4,7 @@ import '../../models/transactions_by_customer_id_models.dart';
 
 part 'get_transactions_by_customer_id_response.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable(explicitToJson: true)
 class GetTransactionsByCustomerIdResponse  extends TransactionsByCustomerIdModels{
 
   factory GetTransactionsByCustomerIdResponse.fromJson(

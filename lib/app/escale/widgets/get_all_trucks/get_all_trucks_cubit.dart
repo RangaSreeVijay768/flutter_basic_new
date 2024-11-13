@@ -20,7 +20,7 @@ class GetAllTrucksCubit extends BaseCubit<GetAllTrucksState> {
   GetAllTrucksCubit({required super.context})
       : super(initialState: GetAllTrucksState.initial()) {
     truckService = GetIt.instance<TruckService>();
-    getAllTrucks(createRequestData());
+    // getAllTrucks(createRequestData());
   }
 
   GetAllTrucksRequest createRequestData() {

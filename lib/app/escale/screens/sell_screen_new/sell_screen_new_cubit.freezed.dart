@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'sell_screen_cubit.dart';
+part of 'sell_screen_new_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,10 +15,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$SellScreenState {
+mixin _$SellScreenNewState {
   GetAllTransactionsState? get getAllTransactionsState =>
-      throw _privateConstructorUsedError;
-  SellFormTemplateState? get sellFormTemplateState =>
       throw _privateConstructorUsedError;
   SellScreenTemplateState? get sellScreenTemplateState =>
       throw _privateConstructorUsedError;
@@ -35,7 +33,6 @@ mixin _$SellScreenState {
   TResult when<TResult extends Object?>({
     required TResult Function(
             GetAllTransactionsState? getAllTransactionsState,
-            SellFormTemplateState? sellFormTemplateState,
             SellScreenTemplateState? sellScreenTemplateState,
             bool? loadingButton,
             List<GetAllTrucksResponse>? getAllTrucksResponse,
@@ -50,7 +47,6 @@ mixin _$SellScreenState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             GetAllTransactionsState? getAllTransactionsState,
-            SellFormTemplateState? sellFormTemplateState,
             SellScreenTemplateState? sellScreenTemplateState,
             bool? loadingButton,
             List<GetAllTrucksResponse>? getAllTrucksResponse,
@@ -65,7 +61,6 @@ mixin _$SellScreenState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             GetAllTransactionsState? getAllTransactionsState,
-            SellFormTemplateState? sellFormTemplateState,
             SellScreenTemplateState? sellScreenTemplateState,
             bool? loadingButton,
             List<GetAllTrucksResponse>? getAllTrucksResponse,
@@ -94,22 +89,21 @@ mixin _$SellScreenState {
   }) =>
       throw _privateConstructorUsedError;
 
-  /// Create a copy of SellScreenState
+  /// Create a copy of SellScreenNewState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SellScreenStateCopyWith<SellScreenState> get copyWith =>
+  $SellScreenNewStateCopyWith<SellScreenNewState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SellScreenStateCopyWith<$Res> {
-  factory $SellScreenStateCopyWith(
-          SellScreenState value, $Res Function(SellScreenState) then) =
-      _$SellScreenStateCopyWithImpl<$Res, SellScreenState>;
+abstract class $SellScreenNewStateCopyWith<$Res> {
+  factory $SellScreenNewStateCopyWith(
+          SellScreenNewState value, $Res Function(SellScreenNewState) then) =
+      _$SellScreenNewStateCopyWithImpl<$Res, SellScreenNewState>;
   @useResult
   $Res call(
       {GetAllTransactionsState? getAllTransactionsState,
-      SellFormTemplateState? sellFormTemplateState,
       SellScreenTemplateState? sellScreenTemplateState,
       bool? loadingButton,
       List<GetAllTrucksResponse>? getAllTrucksResponse,
@@ -119,28 +113,26 @@ abstract class $SellScreenStateCopyWith<$Res> {
       BluetoothPrintConnectDeviceState? bluetoothState});
 
   $GetAllTransactionsStateCopyWith<$Res>? get getAllTransactionsState;
-  $SellFormTemplateStateCopyWith<$Res>? get sellFormTemplateState;
   $SellScreenTemplateStateCopyWith<$Res>? get sellScreenTemplateState;
   $BluetoothPrintConnectDeviceStateCopyWith<$Res>? get bluetoothState;
 }
 
 /// @nodoc
-class _$SellScreenStateCopyWithImpl<$Res, $Val extends SellScreenState>
-    implements $SellScreenStateCopyWith<$Res> {
-  _$SellScreenStateCopyWithImpl(this._value, this._then);
+class _$SellScreenNewStateCopyWithImpl<$Res, $Val extends SellScreenNewState>
+    implements $SellScreenNewStateCopyWith<$Res> {
+  _$SellScreenNewStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SellScreenState
+  /// Create a copy of SellScreenNewState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? getAllTransactionsState = freezed,
-    Object? sellFormTemplateState = freezed,
     Object? sellScreenTemplateState = freezed,
     Object? loadingButton = freezed,
     Object? getAllTrucksResponse = freezed,
@@ -154,10 +146,6 @@ class _$SellScreenStateCopyWithImpl<$Res, $Val extends SellScreenState>
           ? _value.getAllTransactionsState
           : getAllTransactionsState // ignore: cast_nullable_to_non_nullable
               as GetAllTransactionsState?,
-      sellFormTemplateState: freezed == sellFormTemplateState
-          ? _value.sellFormTemplateState
-          : sellFormTemplateState // ignore: cast_nullable_to_non_nullable
-              as SellFormTemplateState?,
       sellScreenTemplateState: freezed == sellScreenTemplateState
           ? _value.sellScreenTemplateState
           : sellScreenTemplateState // ignore: cast_nullable_to_non_nullable
@@ -189,7 +177,7 @@ class _$SellScreenStateCopyWithImpl<$Res, $Val extends SellScreenState>
     ) as $Val);
   }
 
-  /// Create a copy of SellScreenState
+  /// Create a copy of SellScreenNewState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -204,22 +192,7 @@ class _$SellScreenStateCopyWithImpl<$Res, $Val extends SellScreenState>
     });
   }
 
-  /// Create a copy of SellScreenState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $SellFormTemplateStateCopyWith<$Res>? get sellFormTemplateState {
-    if (_value.sellFormTemplateState == null) {
-      return null;
-    }
-
-    return $SellFormTemplateStateCopyWith<$Res>(_value.sellFormTemplateState!,
-        (value) {
-      return _then(_value.copyWith(sellFormTemplateState: value) as $Val);
-    });
-  }
-
-  /// Create a copy of SellScreenState
+  /// Create a copy of SellScreenNewState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -234,7 +207,7 @@ class _$SellScreenStateCopyWithImpl<$Res, $Val extends SellScreenState>
     });
   }
 
-  /// Create a copy of SellScreenState
+  /// Create a copy of SellScreenNewState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -252,7 +225,7 @@ class _$SellScreenStateCopyWithImpl<$Res, $Val extends SellScreenState>
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res>
-    implements $SellScreenStateCopyWith<$Res> {
+    implements $SellScreenNewStateCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
@@ -260,7 +233,6 @@ abstract class _$$InitialImplCopyWith<$Res>
   @useResult
   $Res call(
       {GetAllTransactionsState? getAllTransactionsState,
-      SellFormTemplateState? sellFormTemplateState,
       SellScreenTemplateState? sellScreenTemplateState,
       bool? loadingButton,
       List<GetAllTrucksResponse>? getAllTrucksResponse,
@@ -272,8 +244,6 @@ abstract class _$$InitialImplCopyWith<$Res>
   @override
   $GetAllTransactionsStateCopyWith<$Res>? get getAllTransactionsState;
   @override
-  $SellFormTemplateStateCopyWith<$Res>? get sellFormTemplateState;
-  @override
   $SellScreenTemplateStateCopyWith<$Res>? get sellScreenTemplateState;
   @override
   $BluetoothPrintConnectDeviceStateCopyWith<$Res>? get bluetoothState;
@@ -281,19 +251,18 @@ abstract class _$$InitialImplCopyWith<$Res>
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$SellScreenStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$SellScreenNewStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SellScreenState
+  /// Create a copy of SellScreenNewState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? getAllTransactionsState = freezed,
-    Object? sellFormTemplateState = freezed,
     Object? sellScreenTemplateState = freezed,
     Object? loadingButton = freezed,
     Object? getAllTrucksResponse = freezed,
@@ -307,10 +276,6 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.getAllTransactionsState
           : getAllTransactionsState // ignore: cast_nullable_to_non_nullable
               as GetAllTransactionsState?,
-      sellFormTemplateState: freezed == sellFormTemplateState
-          ? _value.sellFormTemplateState
-          : sellFormTemplateState // ignore: cast_nullable_to_non_nullable
-              as SellFormTemplateState?,
       sellScreenTemplateState: freezed == sellScreenTemplateState
           ? _value.sellScreenTemplateState
           : sellScreenTemplateState // ignore: cast_nullable_to_non_nullable
@@ -348,7 +313,6 @@ class __$$InitialImplCopyWithImpl<$Res>
 class _$InitialImpl implements _Initial {
   const _$InitialImpl(
       {this.getAllTransactionsState,
-      this.sellFormTemplateState,
       this.sellScreenTemplateState,
       this.loadingButton,
       final List<GetAllTrucksResponse>? getAllTrucksResponse,
@@ -361,8 +325,6 @@ class _$InitialImpl implements _Initial {
 
   @override
   final GetAllTransactionsState? getAllTransactionsState;
-  @override
-  final SellFormTemplateState? sellFormTemplateState;
   @override
   final SellScreenTemplateState? sellScreenTemplateState;
   @override
@@ -400,7 +362,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'SellScreenState.initial(getAllTransactionsState: $getAllTransactionsState, sellFormTemplateState: $sellFormTemplateState, sellScreenTemplateState: $sellScreenTemplateState, loadingButton: $loadingButton, getAllTrucksResponse: $getAllTrucksResponse, getAllTrucksStatus: $getAllTrucksStatus, getAllCustomersResponse: $getAllCustomersResponse, getAllCustomersStatus: $getAllCustomersStatus, bluetoothState: $bluetoothState)';
+    return 'SellScreenNewState.initial(getAllTransactionsState: $getAllTransactionsState, sellScreenTemplateState: $sellScreenTemplateState, loadingButton: $loadingButton, getAllTrucksResponse: $getAllTrucksResponse, getAllTrucksStatus: $getAllTrucksStatus, getAllCustomersResponse: $getAllCustomersResponse, getAllCustomersStatus: $getAllCustomersStatus, bluetoothState: $bluetoothState)';
   }
 
   @override
@@ -411,8 +373,6 @@ class _$InitialImpl implements _Initial {
             (identical(
                     other.getAllTransactionsState, getAllTransactionsState) ||
                 other.getAllTransactionsState == getAllTransactionsState) &&
-            (identical(other.sellFormTemplateState, sellFormTemplateState) ||
-                other.sellFormTemplateState == sellFormTemplateState) &&
             (identical(
                     other.sellScreenTemplateState, sellScreenTemplateState) ||
                 other.sellScreenTemplateState == sellScreenTemplateState) &&
@@ -434,7 +394,6 @@ class _$InitialImpl implements _Initial {
   int get hashCode => Object.hash(
       runtimeType,
       getAllTransactionsState,
-      sellFormTemplateState,
       sellScreenTemplateState,
       loadingButton,
       const DeepCollectionEquality().hash(_getAllTrucksResponse),
@@ -443,7 +402,7 @@ class _$InitialImpl implements _Initial {
       getAllCustomersStatus,
       bluetoothState);
 
-  /// Create a copy of SellScreenState
+  /// Create a copy of SellScreenNewState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -456,7 +415,6 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function(
             GetAllTransactionsState? getAllTransactionsState,
-            SellFormTemplateState? sellFormTemplateState,
             SellScreenTemplateState? sellScreenTemplateState,
             bool? loadingButton,
             List<GetAllTrucksResponse>? getAllTrucksResponse,
@@ -468,7 +426,6 @@ class _$InitialImpl implements _Initial {
   }) {
     return initial(
         getAllTransactionsState,
-        sellFormTemplateState,
         sellScreenTemplateState,
         loadingButton,
         getAllTrucksResponse,
@@ -483,7 +440,6 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             GetAllTransactionsState? getAllTransactionsState,
-            SellFormTemplateState? sellFormTemplateState,
             SellScreenTemplateState? sellScreenTemplateState,
             bool? loadingButton,
             List<GetAllTrucksResponse>? getAllTrucksResponse,
@@ -495,7 +451,6 @@ class _$InitialImpl implements _Initial {
   }) {
     return initial?.call(
         getAllTransactionsState,
-        sellFormTemplateState,
         sellScreenTemplateState,
         loadingButton,
         getAllTrucksResponse,
@@ -510,7 +465,6 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             GetAllTransactionsState? getAllTransactionsState,
-            SellFormTemplateState? sellFormTemplateState,
             SellScreenTemplateState? sellScreenTemplateState,
             bool? loadingButton,
             List<GetAllTrucksResponse>? getAllTrucksResponse,
@@ -524,7 +478,6 @@ class _$InitialImpl implements _Initial {
     if (initial != null) {
       return initial(
           getAllTransactionsState,
-          sellFormTemplateState,
           sellScreenTemplateState,
           loadingButton,
           getAllTrucksResponse,
@@ -565,10 +518,9 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements SellScreenState {
+abstract class _Initial implements SellScreenNewState {
   const factory _Initial(
       {final GetAllTransactionsState? getAllTransactionsState,
-      final SellFormTemplateState? sellFormTemplateState,
       final SellScreenTemplateState? sellScreenTemplateState,
       final bool? loadingButton,
       final List<GetAllTrucksResponse>? getAllTrucksResponse,
@@ -579,8 +531,6 @@ abstract class _Initial implements SellScreenState {
 
   @override
   GetAllTransactionsState? get getAllTransactionsState;
-  @override
-  SellFormTemplateState? get sellFormTemplateState;
   @override
   SellScreenTemplateState? get sellScreenTemplateState;
   @override
@@ -596,7 +546,7 @@ abstract class _Initial implements SellScreenState {
   @override
   BluetoothPrintConnectDeviceState? get bluetoothState;
 
-  /// Create a copy of SellScreenState
+  /// Create a copy of SellScreenNewState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)

@@ -1,3 +1,4 @@
+import 'package:basic/app/authentication/authentication_cubit.dart';
 import 'package:basic/app/user_accounts/services/user_account_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

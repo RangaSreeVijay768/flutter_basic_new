@@ -5,6 +5,7 @@ import 'package:basic/app/escale/screens/receipt_screen/receipt_screen.dart';
 import 'package:basic/app/escale/screens/receive_screen/receive_screen.dart';
 import 'package:basic/app/escale/screens/report_screen/report_screen.dart';
 import 'package:basic/app/escale/screens/sell_screen/sell_screen.dart';
+import 'package:basic/app/escale/screens/sell_screen_new/sell_screen_new.dart';
 import 'package:basic/app/escale/screens/setting_screen/setting_screen.dart';
 import 'package:basic/app/onboarding/screens/onboarding_login_screen/onboarding_login_screen.dart';
 import 'package:basic/app/onboarding/screens/onboarding_signup_screen/onboarding_signup_screen.dart';
@@ -95,7 +96,7 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(
       path: '/sell',
       builder: (context, state) {
-        return SellScreen();
+        return SellScreenNew();
       }
   ),
   GoRoute(

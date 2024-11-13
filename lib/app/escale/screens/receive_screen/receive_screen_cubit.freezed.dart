@@ -21,12 +21,15 @@ mixin _$ReceiveScreenState {
   List<GetAllItemsResponse>? get getAllItemsResponse =>
       throw _privateConstructorUsedError;
   BooleanStatus get getAllItemsStatus => throw _privateConstructorUsedError;
+  List<GetAllTrucksResponse>? get getAllTrucksResponse =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
             GetAllTrucksState? getAllTrucksState,
             List<GetAllItemsResponse>? getAllItemsResponse,
-            BooleanStatus getAllItemsStatus)
+            BooleanStatus getAllItemsStatus,
+            List<GetAllTrucksResponse>? getAllTrucksResponse)
         initial,
   }) =>
       throw _privateConstructorUsedError;
@@ -35,7 +38,8 @@ mixin _$ReceiveScreenState {
     TResult? Function(
             GetAllTrucksState? getAllTrucksState,
             List<GetAllItemsResponse>? getAllItemsResponse,
-            BooleanStatus getAllItemsStatus)?
+            BooleanStatus getAllItemsStatus,
+            List<GetAllTrucksResponse>? getAllTrucksResponse)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
@@ -44,7 +48,8 @@ mixin _$ReceiveScreenState {
     TResult Function(
             GetAllTrucksState? getAllTrucksState,
             List<GetAllItemsResponse>? getAllItemsResponse,
-            BooleanStatus getAllItemsStatus)?
+            BooleanStatus getAllItemsStatus,
+            List<GetAllTrucksResponse>? getAllTrucksResponse)?
         initial,
     required TResult orElse(),
   }) =>
@@ -82,7 +87,8 @@ abstract class $ReceiveScreenStateCopyWith<$Res> {
   $Res call(
       {GetAllTrucksState? getAllTrucksState,
       List<GetAllItemsResponse>? getAllItemsResponse,
-      BooleanStatus getAllItemsStatus});
+      BooleanStatus getAllItemsStatus,
+      List<GetAllTrucksResponse>? getAllTrucksResponse});
 
   $GetAllTrucksStateCopyWith<$Res>? get getAllTrucksState;
 }
@@ -105,6 +111,7 @@ class _$ReceiveScreenStateCopyWithImpl<$Res, $Val extends ReceiveScreenState>
     Object? getAllTrucksState = freezed,
     Object? getAllItemsResponse = freezed,
     Object? getAllItemsStatus = null,
+    Object? getAllTrucksResponse = freezed,
   }) {
     return _then(_value.copyWith(
       getAllTrucksState: freezed == getAllTrucksState
@@ -119,6 +126,10 @@ class _$ReceiveScreenStateCopyWithImpl<$Res, $Val extends ReceiveScreenState>
           ? _value.getAllItemsStatus
           : getAllItemsStatus // ignore: cast_nullable_to_non_nullable
               as BooleanStatus,
+      getAllTrucksResponse: freezed == getAllTrucksResponse
+          ? _value.getAllTrucksResponse
+          : getAllTrucksResponse // ignore: cast_nullable_to_non_nullable
+              as List<GetAllTrucksResponse>?,
     ) as $Val);
   }
 
@@ -148,7 +159,8 @@ abstract class _$$InitialImplCopyWith<$Res>
   $Res call(
       {GetAllTrucksState? getAllTrucksState,
       List<GetAllItemsResponse>? getAllItemsResponse,
-      BooleanStatus getAllItemsStatus});
+      BooleanStatus getAllItemsStatus,
+      List<GetAllTrucksResponse>? getAllTrucksResponse});
 
   @override
   $GetAllTrucksStateCopyWith<$Res>? get getAllTrucksState;
@@ -170,6 +182,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? getAllTrucksState = freezed,
     Object? getAllItemsResponse = freezed,
     Object? getAllItemsStatus = null,
+    Object? getAllTrucksResponse = freezed,
   }) {
     return _then(_$InitialImpl(
       getAllTrucksState: freezed == getAllTrucksState
@@ -184,6 +197,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.getAllItemsStatus
           : getAllItemsStatus // ignore: cast_nullable_to_non_nullable
               as BooleanStatus,
+      getAllTrucksResponse: freezed == getAllTrucksResponse
+          ? _value._getAllTrucksResponse
+          : getAllTrucksResponse // ignore: cast_nullable_to_non_nullable
+              as List<GetAllTrucksResponse>?,
     ));
   }
 }
@@ -194,8 +211,10 @@ class _$InitialImpl implements _Initial {
   const _$InitialImpl(
       {this.getAllTrucksState,
       final List<GetAllItemsResponse>? getAllItemsResponse,
-      this.getAllItemsStatus = BooleanStatus.initial})
-      : _getAllItemsResponse = getAllItemsResponse;
+      this.getAllItemsStatus = BooleanStatus.initial,
+      final List<GetAllTrucksResponse>? getAllTrucksResponse})
+      : _getAllItemsResponse = getAllItemsResponse,
+        _getAllTrucksResponse = getAllTrucksResponse;
 
   @override
   final GetAllTrucksState? getAllTrucksState;
@@ -213,10 +232,20 @@ class _$InitialImpl implements _Initial {
   @override
   @JsonKey()
   final BooleanStatus getAllItemsStatus;
+  final List<GetAllTrucksResponse>? _getAllTrucksResponse;
+  @override
+  List<GetAllTrucksResponse>? get getAllTrucksResponse {
+    final value = _getAllTrucksResponse;
+    if (value == null) return null;
+    if (_getAllTrucksResponse is EqualUnmodifiableListView)
+      return _getAllTrucksResponse;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'ReceiveScreenState.initial(getAllTrucksState: $getAllTrucksState, getAllItemsResponse: $getAllItemsResponse, getAllItemsStatus: $getAllItemsStatus)';
+    return 'ReceiveScreenState.initial(getAllTrucksState: $getAllTrucksState, getAllItemsResponse: $getAllItemsResponse, getAllItemsStatus: $getAllItemsStatus, getAllTrucksResponse: $getAllTrucksResponse)';
   }
 
   @override
@@ -229,7 +258,9 @@ class _$InitialImpl implements _Initial {
             const DeepCollectionEquality()
                 .equals(other._getAllItemsResponse, _getAllItemsResponse) &&
             (identical(other.getAllItemsStatus, getAllItemsStatus) ||
-                other.getAllItemsStatus == getAllItemsStatus));
+                other.getAllItemsStatus == getAllItemsStatus) &&
+            const DeepCollectionEquality()
+                .equals(other._getAllTrucksResponse, _getAllTrucksResponse));
   }
 
   @override
@@ -237,7 +268,8 @@ class _$InitialImpl implements _Initial {
       runtimeType,
       getAllTrucksState,
       const DeepCollectionEquality().hash(_getAllItemsResponse),
-      getAllItemsStatus);
+      getAllItemsStatus,
+      const DeepCollectionEquality().hash(_getAllTrucksResponse));
 
   /// Create a copy of ReceiveScreenState
   /// with the given fields replaced by the non-null parameter values.
@@ -253,10 +285,12 @@ class _$InitialImpl implements _Initial {
     required TResult Function(
             GetAllTrucksState? getAllTrucksState,
             List<GetAllItemsResponse>? getAllItemsResponse,
-            BooleanStatus getAllItemsStatus)
+            BooleanStatus getAllItemsStatus,
+            List<GetAllTrucksResponse>? getAllTrucksResponse)
         initial,
   }) {
-    return initial(getAllTrucksState, getAllItemsResponse, getAllItemsStatus);
+    return initial(getAllTrucksState, getAllItemsResponse, getAllItemsStatus,
+        getAllTrucksResponse);
   }
 
   @override
@@ -265,11 +299,12 @@ class _$InitialImpl implements _Initial {
     TResult? Function(
             GetAllTrucksState? getAllTrucksState,
             List<GetAllItemsResponse>? getAllItemsResponse,
-            BooleanStatus getAllItemsStatus)?
+            BooleanStatus getAllItemsStatus,
+            List<GetAllTrucksResponse>? getAllTrucksResponse)?
         initial,
   }) {
-    return initial?.call(
-        getAllTrucksState, getAllItemsResponse, getAllItemsStatus);
+    return initial?.call(getAllTrucksState, getAllItemsResponse,
+        getAllItemsStatus, getAllTrucksResponse);
   }
 
   @override
@@ -278,12 +313,14 @@ class _$InitialImpl implements _Initial {
     TResult Function(
             GetAllTrucksState? getAllTrucksState,
             List<GetAllItemsResponse>? getAllItemsResponse,
-            BooleanStatus getAllItemsStatus)?
+            BooleanStatus getAllItemsStatus,
+            List<GetAllTrucksResponse>? getAllTrucksResponse)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(getAllTrucksState, getAllItemsResponse, getAllItemsStatus);
+      return initial(getAllTrucksState, getAllItemsResponse, getAllItemsStatus,
+          getAllTrucksResponse);
     }
     return orElse();
   }
@@ -321,7 +358,8 @@ abstract class _Initial implements ReceiveScreenState {
   const factory _Initial(
       {final GetAllTrucksState? getAllTrucksState,
       final List<GetAllItemsResponse>? getAllItemsResponse,
-      final BooleanStatus getAllItemsStatus}) = _$InitialImpl;
+      final BooleanStatus getAllItemsStatus,
+      final List<GetAllTrucksResponse>? getAllTrucksResponse}) = _$InitialImpl;
 
   @override
   GetAllTrucksState? get getAllTrucksState;
@@ -329,6 +367,8 @@ abstract class _Initial implements ReceiveScreenState {
   List<GetAllItemsResponse>? get getAllItemsResponse;
   @override
   BooleanStatus get getAllItemsStatus;
+  @override
+  List<GetAllTrucksResponse>? get getAllTrucksResponse;
 
   /// Create a copy of ReceiveScreenState
   /// with the given fields replaced by the non-null parameter values.

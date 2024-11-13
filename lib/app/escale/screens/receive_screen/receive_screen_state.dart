@@ -6,5 +6,6 @@ class ReceiveScreenState with _$ReceiveScreenState {
     GetAllTrucksState? getAllTrucksState,
     List<GetAllItemsResponse>? getAllItemsResponse,
     @Default(BooleanStatus.initial) BooleanStatus getAllItemsStatus,
+    List<GetAllTrucksResponse>? getAllTrucksResponse
   }) = _Initial;
 }

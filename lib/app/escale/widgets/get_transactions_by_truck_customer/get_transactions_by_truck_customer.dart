@@ -47,16 +47,16 @@ class GetTransactionsByTruckCustomer extends BaseStatelessWidget<
                 return Container(
                   child: Padding(
                     padding: edge_insets_y_8,
-                    child: Column(
+                    child: Row(
                       children: [
                         Text(" ${transaction.wt ?? ""} kg ⚖️", style: TextStyle(
                           fontWeight: Fonts.f500,
-                          fontSize: Fonts.fontSize16
+                          fontSize: Fonts.fontSize24
                         ),),
                         SizedBox(width: 8),
                         Text("${transaction.bg ?? ""} bags 🎒", style: TextStyle(
                             fontWeight: Fonts.f500,
-                            fontSize: Fonts.fontSize16
+                            fontSize: Fonts.fontSize24
                         ),),
                       ],
                     ),
@@ -67,16 +67,16 @@ class GetTransactionsByTruckCustomer extends BaseStatelessWidget<
           : Center(
             child: Padding(
               padding: edge_insets_y_8,
-              child: Column(
+              child: Row(
                 children: [
                   Text(" kg ⚖️", style: TextStyle(
                       fontWeight: Fonts.f500,
-                      fontSize: Fonts.fontSize16
+                      fontSize: Fonts.fontSize24
                   ),),
                   SizedBox(width: 8),
                   Text(" bags 🎒", style: TextStyle(
                       fontWeight: Fonts.f500,
-                      fontSize: Fonts.fontSize16
+                      fontSize: Fonts.fontSize24
                   ),),
                 ],
               ),

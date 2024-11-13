@@ -1,5 +1,6 @@
 import 'package:basic/app/core/logger/log.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:get_it/get_it.dart';
 
 import '../core/blocs/base_cubit.dart';
 import '../core/database/boolean_status.dart';
@@ -32,7 +33,6 @@ class AuthenticationCubit extends BaseCubit<AuthenticationState> {
     emit(state.copyWith(
         userAccount: userAccount,
         authenticationStatus: BooleanStatus.success));
-    logger.d("UserAccount saved");
     return Future.value(true);
   }
 }

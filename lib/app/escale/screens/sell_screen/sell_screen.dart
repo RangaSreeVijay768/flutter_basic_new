@@ -1,5 +1,7 @@
 import 'package:basic/app/core/database/boolean_status.dart';
 import 'package:basic/app/core/logger/log.dart';
+import 'package:basic/app/core/services/usb_serial.dart';
+import 'package:basic/app/escale/screens/bluetooth_printer_screen/bluetooth_printer_screen.dart';
 import 'package:basic/app/escale/screens/sell_page.dart';
 import 'package:basic/app/escale/widgets/get_all_transactions/get_all_transactions.dart';
 import 'package:basic/app/escale/widgets/get_all_transactions/get_all_transactions_controller.dart';
@@ -18,20 +20,20 @@ import 'package:basic/app/themes/fonts.dart';
 import '../../../core/widgets/app_scaffold.dart';
 import 'sell_screen_controller.dart';
 import 'sell_screen_cubit.dart';
-
 import 'package:basic/app/core/widgets/base_stateless_widget.dart';
 
 class SellScreen extends BaseStatelessWidget<SellScreenController, SellScreenCubit, SellScreenState> {
   SellScreen({Key? key, super.controller, super.onStateChanged}) : super(key: key);
 
   GetAllTransactionsController getAllTransactionsController = GetAllTransactionsController();
-
   final List<SellFormTemplateController> sellFormTemplateControllers = [];
+  final Map<SellFormTemplateController, Color> controllerColors = {};
 
   @override
   Widget build(BuildContext context) {
     if (sellFormTemplateControllers.isEmpty) {
-      sellFormTemplateControllers.add(SellFormTemplateController());
+      _addNewControllerWithColor();
+      _addNewControllerWithColor();
     }
 
     return BlocProvider<SellScreenCubit>(
@@ -45,9 +47,47 @@ class SellScreen extends BaseStatelessWidget<SellScreenController, SellScreenCub
         builder: (context, state) {
           initializeController(context);
           return AppScaffold(
-            appBarTitle: Text("Sell"),
+            appBarTitle: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(),
+                Text("Sell"),
+                Container(
+                  width: MediaQuery.sizeOf(context).width/7,
+                  child: Row(
+                    children: [
+                      IconButton(
+                          onPressed: (){},
+                          style: IconButton.styleFrom(
+                            side: BorderSide(
+                              color: usbSerialService.status == "Connected"
+                                  ? AppColors.green : AppColors.grey1,
+                              width: 2
+                            )
+                          ),
+                          icon: (usbSerialService.status == "Connected"
+                              ? Icon(Icons.usb, color: AppColors.green,) : Icon(Icons.usb_off_outlined, color: AppColors.grey1,)),
+                      ),
+                      IconButton(
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => BluetoothPrinterScreen()));
+                        },
+                        style: IconButton.styleFrom(
+                            side: BorderSide(
+                                color: state.bluetoothState?.bluetoothPrintConnectDeviceStatus == BooleanStatus.pending
+                                    ? AppColors.grey1 : AppColors.green,
+                                width: 2
+                            )
+                        ),
+                        icon: (state.bluetoothState?.bluetoothPrintConnectDeviceStatus == BooleanStatus.pending
+                            ? Icon(Icons.print_disabled_outlined, color: AppColors.grey1,) : Icon(Icons.print_outlined, color: AppColors.green,)),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
             body: SingleChildScrollView(
-              // padding: edge_insets_16,
               child: Column(
                 children: [
                   GetAllTransactions(
@@ -69,7 +109,7 @@ class SellScreen extends BaseStatelessWidget<SellScreenController, SellScreenCub
                           SellFormTemplateController controller = entry.value;
 
                           return Container(
-                            width: constraints.maxWidth / columns-12,
+                            width: constraints.maxWidth / columns - 12,
                             child: SellFormTemplate(
                               key: ValueKey(controller),
                               customers: state.getAllCustomersResponse ?? [],
@@ -77,6 +117,7 @@ class SellScreen extends BaseStatelessWidget<SellScreenController, SellScreenCub
                               controller: controller,
                               closeTemplate: () {
                                 sellFormTemplateControllers.remove(controller);
+                                controllerColors.remove(controller); // Remove color mapping
                                 (context as Element).markNeedsBuild();
                               },
                               onTransactionCreated: () async {
@@ -87,7 +128,7 @@ class SellScreen extends BaseStatelessWidget<SellScreenController, SellScreenCub
                                 sellFormTemplateControllers.add(controller);
                                 (context as Element).markNeedsBuild();
                               },
-                              color: (AppColors.formTemplateColors)[index % (AppColors.formTemplateColors).length],
+                              color: controllerColors[controller]!, // Retrieve color from map
                               onStateChanged: (sellFormTemplateState) => getCubit(context).emitState(
                                   state.copyWith(sellFormTemplateState: sellFormTemplateState)),
                             ),
@@ -101,63 +142,24 @@ class SellScreen extends BaseStatelessWidget<SellScreenController, SellScreenCub
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
-                var newController = SellFormTemplateController();
-                sellFormTemplateControllers.add(newController);
+                _addNewControllerWithColor();
                 (context as Element).markNeedsBuild();
               },
               child: Icon(Icons.add),
             ),
-            // bottomNavigationBar: Container(
-            //   padding: edge_insets_y_10,
-            //   decoration: const BoxDecoration(
-            //       color: AppColors.white,
-            //       boxShadow: [shadows.bs_primary]),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       Container(
-            //         width: MediaQuery.of(context).size.width / 2,
-            //         child: TextButton(
-            //           style: TextButton.styleFrom(
-            //             backgroundColor: AppColors.bgPrimary,
-            //           ),
-            //           onPressed: (state.loadingButton == true)
-            //               ? null
-            //               : () async {
-            //             getCubit(context).setLoadingButtonStatus(true);
-            //             var completedControllers = sellFormTemplateControllers
-            //                 .where((controller) => controller.getChildCubit().isFormComplete())
-            //                 .toList();
-            //
-            //             for (var controller in completedControllers) {
-            //               await controller
-            //                   .getChildCubit()
-            //                   .createTransaction(controller.getChildCubit().createRequestData());
-            //             }
-            //
-            //             sellFormTemplateControllers.clear();
-            //             sellFormTemplateControllers.add(SellFormTemplateController());
-            //
-            //             await getAllTransactionsController
-            //                 .getChildCubit()
-            //                 .getAllTransactions(getAllTransactionsController.getChildCubit().createRequestData());
-            //
-            //             getCubit(context).setLoadingButtonStatus(false);
-            //           },
-            //           child: const Text(
-            //             "Submit",
-            //             style: TextStyle(color: AppColors.white),
-            //           ),
-            //         ),
-            //       )
-            //     ],
-            //   ),
-            // ),
           );
         },
       ),
     );
   }
+
+  void _addNewControllerWithColor() {
+    var newController = SellFormTemplateController();
+    Color assignedColor = AppColors.formTemplateColors[sellFormTemplateControllers.length % AppColors.formTemplateColors.length];
+    sellFormTemplateControllers.add(newController);
+    controllerColors[newController] = assignedColor;
+  }
+
   @override
   SellScreenCubit createCubitAndAssignToController(BuildContext context) {
     SellScreenCubit cubit = SellScreenCubit(context: context);

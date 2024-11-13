@@ -1,3 +1,4 @@
+import 'package:basic/app/escale/request_response/get_all_trucks/get_all_trucks_response.dart';
 import 'package:basic/app/escale/widgets/get_all_trucks/get_all_trucks_cubit.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

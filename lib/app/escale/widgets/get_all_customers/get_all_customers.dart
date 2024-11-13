@@ -124,45 +124,27 @@ class GetAllCustomers extends BaseStatelessWidget<GetAllCustomersController,
   }
 }
 
-// class CustomerDropdown extends GetAllCustomers {
-//   final Function(Customers?)? onChanged;
-//
-//   CustomerDropdown({Key? key, this.onChanged}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocProvider<GetAllCustomersCubit>(
-//       create: (context) => createCubitAndAssignToController(context),
-//       child: BlocConsumer<GetAllCustomersCubit, GetAllCustomersState>(
-//         listener: (context, state) {
-//           if (onStateChanged != null) {
-//             onStateChanged!(state);
-//           }
-//         },
-//         builder: (context, state) {
-//           initializeController(context);
-//           final customers = state.getAllCustomersResponse;
-//
-//           return Container(
-//               width: MediaQuery.of(context).size.width,
-//               child: DropdownButtonFormField(
-//                 decoration: InputStyles.formTemplateInput(),
-//                 hint: Text("Select Customer"),
-//                 items: customers?.map((customer) => DropdownMenuItem(
-//                   value: customer,
-//                   child: Container(
-//                     width: MediaQuery.sizeOf(context).width * 0.7,
-//                     child: Text(customer.name!),
-//                   ),
-//                 ))
-//                     .toList(),
-//                 onChanged: onChanged,
-//                 menuMaxHeight: 300,
-//                 dropdownColor: AppColors.white,
-//               )
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
+class GetAllCustomersNoTemplate extends GetAllCustomers {
+
+  GetAllCustomersNoTemplate({Key? key, super.controller}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<GetAllCustomersCubit>(
+      create: (context) => createCubitAndAssignToController(context),
+      child: BlocConsumer<GetAllCustomersCubit, GetAllCustomersState>(
+        listener: (context, state) {
+          if (onStateChanged != null) {
+            onStateChanged!(state);
+          }
+        },
+        builder: (context, state) {
+          initializeController(context);
+          final customers = state.getAllCustomersResponse;
+
+          return Container();
+        },
+      ),
+    );
+  }
+}

@@ -17,7 +17,7 @@ class GetTransactionsByCustomerIdCubit
   GetTransactionsByCustomerIdCubit({required super.context, required int customerId})
       : super(initialState: GetTransactionsByCustomerIdState.initial(customerId: customerId)){
     transactionService=GetIt.instance<TransactionService>();
-    getTransactionsByCustomerId(createRequestData());
+    // getTransactionsByCustomerId(createRequestData());
   }
 
 

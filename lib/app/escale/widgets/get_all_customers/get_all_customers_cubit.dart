@@ -19,7 +19,7 @@ class GetAllCustomersCubit extends BaseCubit<GetAllCustomersState> {
   GetAllCustomersCubit({required super.context})
       : super(initialState: GetAllCustomersState.initial()){
     customerService=GetIt.instance<CustomerService>();
-    getAllCustomers(createRequestData());
+    // getAllCustomers(createRequestData());
   }
 
 

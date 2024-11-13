@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'get_all_trucks_response.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable(explicitToJson: true)
 class GetAllTrucksResponse extends Trucks{
 
   factory GetAllTrucksResponse.fromJson(Map<String, dynamic> json) =>

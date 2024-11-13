@@ -34,7 +34,7 @@ class GetTransactionsByCustomerId
         },
         builder: (context, state) {
           initializeController(context);
-          return Container();
+          return SizedBox();
         },
       ),
     );

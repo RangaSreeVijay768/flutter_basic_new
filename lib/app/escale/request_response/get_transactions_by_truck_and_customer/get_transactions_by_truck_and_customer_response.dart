@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'get_transactions_by_truck_and_customer_response.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable(explicitToJson: true)
 class GetTransactionsByTruckAndCustomerResponse extends TransactionsByTruckCustomerModel{
 
   factory GetTransactionsByTruckAndCustomerResponse.fromJson(

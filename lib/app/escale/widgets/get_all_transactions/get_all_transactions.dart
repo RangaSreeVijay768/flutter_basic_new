@@ -91,26 +91,26 @@ class GetAllTransactions extends BaseStatelessWidget<
                                     ],
                                   )
                               ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    height: 35,
-                                    child: IconButton(
-                                        onPressed: (){},
-                                        icon: Icon(Icons.edit, color: Colors.orangeAccent,)
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 35,
-                                    child: IconButton(
-                                        onPressed: (){},
-                                        icon: Icon(Icons.close, color: Colors.redAccent,)
-                                    ),
-                                  )
-                                ],
-                              )
+                              // Column(
+                              //   mainAxisAlignment: MainAxisAlignment.start,
+                              //   crossAxisAlignment: CrossAxisAlignment.start,
+                              //   children: [
+                              //     Container(
+                              //       height: 35,
+                              //       child: IconButton(
+                              //           onPressed: (){},
+                              //           icon: Icon(Icons.edit, color: Colors.orangeAccent,)
+                              //       ),
+                              //     ),
+                              //     Container(
+                              //       height: 35,
+                              //       child: IconButton(
+                              //           onPressed: (){},
+                              //           icon: Icon(Icons.close, color: Colors.redAccent,)
+                              //       ),
+                              //     )
+                              //   ],
+                              // )
                             ],
                           ),
                         ),

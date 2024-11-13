@@ -1,5 +1,9 @@
+import 'package:basic/app/core/database/boolean_status.dart';
+import 'package:basic/app/core/utils/authentication/authentication_utils.dart';
 import 'package:basic/app/core/widgets/app_scaffold.dart';
 import 'package:basic/app/escale/widgets/home_screen_drawer_widget/home_screen_drawer_widget.dart';
+import 'package:basic/app/themes/fonts.dart';
+import 'package:basic/app/user_accounts/models/users/user_account.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,11 +25,6 @@ class HomeScreen
   HomeScreen({Key? key, super.controller, super.onStateChanged})
       : super(key: key);
 
-  Future<void> _login() async {
-    final authService = AuthService();
-    await authService.logout();
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider<HomeScreenCubit>(
@@ -37,16 +36,30 @@ class HomeScreen
           }
         },
         builder: (context, state) {
+          final user = AuthenticationUtils.loggedUser;
           initializeController(context);
           return AppScaffold(
             appBarTitle: Text("Escale"),
             body: Container(
               width: MediaQuery.sizeOf(context).width,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Home Screen"),
+                  SizedBox(height: 40,),
+                  Text("Welcome ${user?.username?.toUpperCase()}", style: TextStyle(
+                    fontSize: Fonts.fontSize32,
+                    fontWeight: Fonts.f500
+                  ),),
+                  Text(user?.email ?? "", style: TextStyle(
+                    fontSize: Fonts.fontSize16
+                  ),),
+                  Text("${user?.shops?[0].name} ( ${user?.shops?[0].number} )", style: TextStyle(
+                      fontSize: Fonts.fontSize16
+                  ),),
+                  Text(user?.shops?[0].address ?? "", style: TextStyle(
+                      fontSize: Fonts.fontSize16
+                  ),),
                 ],
               ),
             ),

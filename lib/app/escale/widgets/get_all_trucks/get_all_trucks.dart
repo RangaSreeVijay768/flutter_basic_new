@@ -12,7 +12,7 @@ import 'package:basic/app/themes/app_colors.dart';
 import 'package:basic/app/themes/edge_insets.dart';
 import 'package:basic/app/themes/fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-
+import 'package:intl/intl.dart';
 import '../../../themes/input_styles.dart';
 import 'get_all_trucks_controller.dart';
 import 'get_all_trucks_cubit.dart';
@@ -76,8 +76,14 @@ class GetAllTrucks
               ),
               Expanded(
                 child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   itemCount: state.getAllTrucksResponse!.length,
                   itemBuilder: (context, index) {
+                    String _formatDate(DateTime? date) {
+                      if (date == null) return 'N/A';
+                      return DateFormat('dd-MM-yyyy').format(date);
+                    }
                     final truck = state.getAllTrucksResponse![index];
                     final backgroundColor =
                     backgroundColors[index % backgroundColors.length];
@@ -91,104 +97,103 @@ class GetAllTrucks
                           border: borders.b_1px_grey4,
                           borderRadius: borderRadius.br_10,
                         ),
-                        child: ExpansionTile(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: borderRadius.br_10,
-                          ),
-                          backgroundColor: AppColors.white,
-                          expandedAlignment: Alignment.centerLeft,
-                          expandedCrossAxisAlignment:
-                          CrossAxisAlignment.start,
-                          title: Row(
+                        child: Container(
+                          padding: edge_insets_8,
+                          child: Column(
                             children: [
-                              Icon(Icons.local_shipping),
-                              SizedBox(width: 8),
-                              Text(
-                                truck.name!,
-                                style: TextStyle(
-                                  fontWeight: Fonts.f500,
-                                  fontSize: Fonts.fontSize16,
-                                ),
-                              ),
-                            ],
-                          ),
-                          children: [
-                            Stack(
-                              alignment: Alignment.topRight,
-                              children: [
-                                Column(
-                                  children: [
-                                    _buildInfoRow("Truck Number:", truck.number!),
-                                    _buildInfoRow("Items:", truck.items!),
-                                    _buildInfoRow("Received date:", truck.createdAt.toString()),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    // width: MediaQuery.sizeOf(context).width/3,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
-                                        SizedBox(width: 10,),
-                                        Column(
+                                        Row(
                                           children: [
-                                            Container(
-                                              child: Text("Weight\n (Actual | Current)",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    fontWeight: Fonts.f500
-                                                ),),
-                                            ),
-                                            Container(
-                                              height: 170,
-                                              width: MediaQuery.sizeOf(context).width / 3,
-                                              child: RecieveGraphs(
-                                                barWidth: 23,
-                                                toY1: truck.weight,
-                                                toY2: truck.currentweight,
-                                                color1: AppColors.bar1,
-                                                color2: AppColors.bar2,
+                                            Icon(Icons.local_shipping),
+                                            SizedBox(width: 8),
+                                            Text("${truck.name} - ${truck.number}",
+                                              style: TextStyle(
+                                                fontWeight: Fonts.f500,
+                                                fontSize: Fonts.fontSize16,
                                               ),
-                                            )
+                                            ),
                                           ],
                                         ),
-                                        SizedBox(width: 20,),
-                                        Column(
-                                          children: [
-                                            Container(
-                                              child: Text("LotSize\n (Actual | Current)",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    fontWeight: Fonts.f500
-                                                ),),
-                                            ),
-                                            Container(
-                                              height: 170,
-                                              width: MediaQuery.sizeOf(context).width / 3,
-                                              child: RecieveGraphs(
-                                                barWidth: 23,
-                                                toY1: truck.lotsize,
-                                                toY2: truck.currentlotsize,
-                                                color1: AppColors.bar3,
-                                                color2: AppColors.bar4,
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                        SizedBox(width: 10,),
+                                        SizedBox(height: 8,),
+                                        _buildInfoRow("Received date: ", _formatDate(truck.createdAt)),
+                                        SizedBox(height: 8,),
+                                        _buildInfoRow("Items:", truck.items!),
                                       ],
                                     ),
-                                    SizedBox(height: 20,),
-                                  ],
-                                ),
-                                Container(
-                                  margin: edge_insets_r_16,
-                                  child: IconButton(
-                                    style: IconButton.styleFrom(
-                                      side: BorderSide(color: AppColors.textHeading, width: 2)
-                                    ),
-                                      onPressed: (){},
-                                      icon: Icon(Icons.edit)
                                   ),
-                                )
-                              ],
-                            ),
-                          ],
+                                  Container(
+                                    width: MediaQuery.sizeOf(context).width/5,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          child: Text("Weight\n (Actual | Current)",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontWeight: Fonts.f500
+                                            ),),
+                                        ),
+                                        Container(
+                                          height: 100,
+                                          width: MediaQuery.sizeOf(context).width / 3,
+                                          child: RecieveGraphs(
+                                            barWidth: 23,
+                                            toY1: truck.weight,
+                                            toY2: truck.currentweight!.toInt(),
+                                            color1: AppColors.bar1,
+                                            color2: AppColors.bar2,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(width: 5,),
+                                  Container(
+                                    width: MediaQuery.sizeOf(context).width/5,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          child: Text("LotSize\n (Actual | Current)",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontWeight: Fonts.f500
+                                            ),),
+                                        ),
+                                        Container(
+                                          height: 100,
+                                          width: MediaQuery.sizeOf(context).width / 3,
+                                          child: RecieveGraphs(
+                                            barWidth: 23,
+                                            toY1: truck.lotsize,
+                                            toY2: truck.currentlotsize,
+                                            color1: AppColors.bar3,
+                                            color2: AppColors.bar4,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              //   children: [
+                              //     SizedBox(width: 10,),
+                              //     SizedBox(width: 20,),
+                              //     SizedBox(width: 10,),
+                              //   ],
+                              // ),
+                            ],
+                          ),
                         ),
                       ),
                     );
@@ -206,7 +211,6 @@ class GetAllTrucks
 
   Widget _buildInfoRow(String label, String value) {
     return Container(
-      padding: edge_insets_10,
       child: Row(
         children: [
           Text(
@@ -298,5 +302,28 @@ class GetAllTrucks
     controller?.cubit = cubit;
     controller?.childContext = context;
     return cubit;
+  }
+}
+
+
+
+class GetAllTrucksNoTemplate extends GetAllTrucks{
+  GetAllTrucksNoTemplate({Key? key, super.controller}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<GetAllTrucksCubit>(
+        create: (context) => createCubitAndAssignToController(context),
+        child: BlocConsumer<GetAllTrucksCubit, GetAllTrucksState>(
+          listener: (context, state){
+            if (onStateChanged != null) {
+              onStateChanged!(state);
+            }
+          },
+          builder: (context, state) {
+            initializeController(context);
+            return Container();
+          },),
+    );
   }
 }

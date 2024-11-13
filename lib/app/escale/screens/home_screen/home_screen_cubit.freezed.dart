@@ -16,19 +16,21 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomeScreenState {
+  AuthenticationState? get authenticationState =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(AuthenticationState? authenticationState) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(AuthenticationState? authenticationState)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(AuthenticationState? authenticationState)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +50,12 @@ mixin _$HomeScreenState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Create a copy of HomeScreenState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $HomeScreenStateCopyWith<HomeScreenState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +63,10 @@ abstract class $HomeScreenStateCopyWith<$Res> {
   factory $HomeScreenStateCopyWith(
           HomeScreenState value, $Res Function(HomeScreenState) then) =
       _$HomeScreenStateCopyWithImpl<$Res, HomeScreenState>;
+  @useResult
+  $Res call({AuthenticationState? authenticationState});
+
+  $AuthenticationStateCopyWith<$Res>? get authenticationState;
 }
 
 /// @nodoc
@@ -69,13 +81,47 @@ class _$HomeScreenStateCopyWithImpl<$Res, $Val extends HomeScreenState>
 
   /// Create a copy of HomeScreenState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? authenticationState = freezed,
+  }) {
+    return _then(_value.copyWith(
+      authenticationState: freezed == authenticationState
+          ? _value.authenticationState
+          : authenticationState // ignore: cast_nullable_to_non_nullable
+              as AuthenticationState?,
+    ) as $Val);
+  }
+
+  /// Create a copy of HomeScreenState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AuthenticationStateCopyWith<$Res>? get authenticationState {
+    if (_value.authenticationState == null) {
+      return null;
+    }
+
+    return $AuthenticationStateCopyWith<$Res>(_value.authenticationState!,
+        (value) {
+      return _then(_value.copyWith(authenticationState: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
+abstract class _$$InitialImplCopyWith<$Res>
+    implements $HomeScreenStateCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({AuthenticationState? authenticationState});
+
+  @override
+  $AuthenticationStateCopyWith<$Res>? get authenticationState;
 }
 
 /// @nodoc
@@ -88,51 +134,77 @@ class __$$InitialImplCopyWithImpl<$Res>
 
   /// Create a copy of HomeScreenState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? authenticationState = freezed,
+  }) {
+    return _then(_$InitialImpl(
+      authenticationState: freezed == authenticationState
+          ? _value.authenticationState
+          : authenticationState // ignore: cast_nullable_to_non_nullable
+              as AuthenticationState?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+  const _$InitialImpl({this.authenticationState});
+
+  @override
+  final AuthenticationState? authenticationState;
 
   @override
   String toString() {
-    return 'HomeScreenState.initial()';
+    return 'HomeScreenState.initial(authenticationState: $authenticationState)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$InitialImpl &&
+            (identical(other.authenticationState, authenticationState) ||
+                other.authenticationState == authenticationState));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, authenticationState);
+
+  /// Create a copy of HomeScreenState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(AuthenticationState? authenticationState) initial,
   }) {
-    return initial();
+    return initial(authenticationState);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(AuthenticationState? authenticationState)? initial,
   }) {
-    return initial?.call();
+    return initial?.call(authenticationState);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(AuthenticationState? authenticationState)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(authenticationState);
     }
     return orElse();
   }
@@ -167,5 +239,16 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements HomeScreenState {
-  const factory _Initial() = _$InitialImpl;
+  const factory _Initial({final AuthenticationState? authenticationState}) =
+      _$InitialImpl;
+
+  @override
+  AuthenticationState? get authenticationState;
+
+  /// Create a copy of HomeScreenState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

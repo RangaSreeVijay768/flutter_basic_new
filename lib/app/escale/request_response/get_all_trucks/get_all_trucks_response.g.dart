@@ -16,12 +16,16 @@ GetAllTrucksResponse _$GetAllTrucksResponseFromJson(
       ..weight = (json['weight'] as num?)?.toInt()
       ..lotsize = (json['lotsize'] as num?)?.toInt()
       ..currentlotsize = (json['currentlotsize'] as num?)?.toInt()
-      ..currentweight = (json['currentweight'] as num?)?.toInt()
+      ..currentweight = (json['currentweight'] as num?)?.toDouble()
       ..status = json['status'] as String?
-      ..createdAt = json['created_at'] as String?
-      ..updatedAt = json['updated_at'] as String?
-      ..shopId = (json['shop_id'] as num?)?.toInt()
-      ..userId = (json['user_id'] as num?)?.toInt();
+      ..createdAt = json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String)
+      ..updatedAt = json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String)
+      ..shopId = (json['shopId'] as num?)?.toInt()
+      ..userId = (json['userId'] as num?)?.toInt();
 
 Map<String, dynamic> _$GetAllTrucksResponseToJson(
         GetAllTrucksResponse instance) =>
@@ -35,8 +39,8 @@ Map<String, dynamic> _$GetAllTrucksResponseToJson(
       'currentlotsize': instance.currentlotsize,
       'currentweight': instance.currentweight,
       'status': instance.status,
-      'created_at': instance.createdAt,
-      'updated_at': instance.updatedAt,
-      'shop_id': instance.shopId,
-      'user_id': instance.userId,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'shopId': instance.shopId,
+      'userId': instance.userId,
     };
