@@ -66,6 +66,7 @@ class SellScreenNew extends BaseStatelessWidget<SellScreenNewController,
         },
         builder: (context, state) {
           initializeController(context);
+          final largeScreen = MediaQuery.sizeOf(context).width > 600;
           return AppScaffold(
             appBarTitle: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,7 +74,9 @@ class SellScreenNew extends BaseStatelessWidget<SellScreenNewController,
                 SizedBox(),
                 Text("Sell"),
                 Container(
-                  width: MediaQuery.sizeOf(context).width / 7,
+                  width: largeScreen
+                      ? MediaQuery.sizeOf(context).width / 7
+                      : MediaQuery.sizeOf(context).width /4,
                   child: Row(
                     children: [
                       IconButton(

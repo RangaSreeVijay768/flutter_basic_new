@@ -42,8 +42,8 @@ class CustomerDropdown extends BaseStatelessWidget<CustomerDropdownController,
           initializeController(context);
           final isLargeScreen = MediaQuery.of(context).size.width > 600;
           final dropdownWidth = isLargeScreen
-              ? MediaQuery.of(context).size.width * 0.32
-              : MediaQuery.of(context).size.width * 0.64;
+              ? MediaQuery.of(context).size.width * 0.36
+              : MediaQuery.of(context).size.width * 0.72;
 
           return Container(
             width: dropdownWidth,
