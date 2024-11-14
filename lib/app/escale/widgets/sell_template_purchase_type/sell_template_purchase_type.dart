@@ -63,7 +63,7 @@ class SellTemplatePurchaseType extends BaseStatelessWidget<SellTemplatePurchaseT
                     children: [
                       Container(
                         width: 24,
-                        height: 30,
+                        height: 36,
                         child: Radio<String>(
                           value: "UPI",
                           groupValue: purchaseType,
@@ -100,7 +100,7 @@ class SellTemplatePurchaseType extends BaseStatelessWidget<SellTemplatePurchaseT
                     children: [
                       Container(
                         width: 24,
-                        height: 30,
+                        height: 36,
                         child: Radio<String>(
                           value: "CASH",
                           groupValue: purchaseType,
@@ -137,7 +137,7 @@ class SellTemplatePurchaseType extends BaseStatelessWidget<SellTemplatePurchaseT
                     children: [
                       Container(
                         width: 24,
-                        height: 30,
+                        height: 36,
                         child: Radio<String>(
                           value: "CREDIT",
                           groupValue: purchaseType,

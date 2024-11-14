@@ -21,7 +21,7 @@ class CreateTruckFormCubit extends BaseFormCubit<CreateTruckFormState> {
     truckService=GetIt.instance<TruckService>();
   }
 
-  void setSelectedItems(Items? items) {
+  void setSelectedItems(String items) {
     emit(state.copyWith(items: items));
   }
 
@@ -37,7 +37,7 @@ class CreateTruckFormCubit extends BaseFormCubit<CreateTruckFormState> {
           name: name ?? formGroup.control('name').value,
           weight: weight ?? formGroup.control('weight').value,
           lotsize: lotsize ?? formGroup.control('lotSize').value,
-          items: items ?? state.items!.name,
+          items: items ?? state.items,
         );
         return request;
       }

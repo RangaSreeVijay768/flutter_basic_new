@@ -31,12 +31,12 @@ class SellScreenNew extends BaseStatelessWidget<SellScreenNewController,
   SellScreenNew({Key? key, super.controller, super.onStateChanged})
       : super(key: key);
   GetAllTransactionsController getAllTransactionsController =
-      GetAllTransactionsController();
+  GetAllTransactionsController();
   final List<SellScreenTemplateController> sellScreenTemplateControllers = [];
   final Map<SellScreenTemplateController, Color> controllerColors = {};
   GetAllTrucksController getAllTrucksController = GetAllTrucksController();
   GetAllCustomersController getAllCustomersController =
-      GetAllCustomersController();
+  GetAllCustomersController();
   @override
   Widget build(BuildContext context) {
     if (sellScreenTemplateControllers.isEmpty) {
@@ -79,27 +79,30 @@ class SellScreenNew extends BaseStatelessWidget<SellScreenNewController,
                       : MediaQuery.sizeOf(context).width /4,
                   child: Row(
                     children: [
-                      IconButton(
-                        onPressed: () {
-                          usbSerialService.status == "Connected"
-                              ? disconnectUsbSerial()
-                              : connectUsbSerial();
-                        },
-                        style: IconButton.styleFrom(
-                            side: BorderSide(
-                                color: usbSerialService.status == "Connected"
-                                    ? AppColors.green
-                                    : AppColors.grey1,
-                                width: 2)),
-                        icon: (usbSerialService.status == "Connected"
-                            ? Icon(
-                                Icons.usb,
-                                color: AppColors.green,
-                              )
-                            : Icon(
-                                Icons.usb_off_outlined,
-                                color: AppColors.grey1,
-                              )),
+                      ValueListenableBuilder(
+                        valueListenable: usbSerialService.statusNotifier,
+                        builder: (context, status, child) => IconButton(
+                          onPressed: () {
+                            status == "Connected"
+                                ? disconnectUsbSerial()
+                                : connectUsbSerial();
+                          },
+                          style: IconButton.styleFrom(
+                              side: BorderSide(
+                                  color: status == "Connected"
+                                      ? AppColors.green
+                                      : AppColors.grey1,
+                                  width: 2)),
+                          icon: status == "Connected"
+                              ? Icon(
+                            Icons.usb,
+                            color: AppColors.green,
+                          )
+                              : Icon(
+                            Icons.usb_off_outlined,
+                            color: AppColors.grey1,
+                          ),
+                        ),
                       ),
                       IconButton(
                         onPressed: () {
@@ -112,22 +115,22 @@ class SellScreenNew extends BaseStatelessWidget<SellScreenNewController,
                         style: IconButton.styleFrom(
                             side: BorderSide(
                                 color: state.bluetoothState
-                                            ?.bluetoothPrintConnectDeviceStatus ==
-                                        BooleanStatus.pending
+                                    ?.bluetoothPrintConnectDeviceStatus ==
+                                    BooleanStatus.pending
                                     ? AppColors.grey1
                                     : AppColors.green,
                                 width: 2)),
-                        icon: (state.bluetoothState
-                                    ?.bluetoothPrintConnectDeviceStatus ==
-                                BooleanStatus.pending
+                        icon: state.bluetoothState
+                            ?.bluetoothPrintConnectDeviceStatus ==
+                            BooleanStatus.pending
                             ? Icon(
-                                Icons.print_disabled_outlined,
-                                color: AppColors.grey1,
-                              )
+                          Icons.print_disabled_outlined,
+                          color: AppColors.grey1,
+                        )
                             : Icon(
-                                Icons.print_outlined,
-                                color: AppColors.green,
-                              )),
+                          Icons.print_outlined,
+                          color: AppColors.green,
+                        ),
                       ),
                     ],
                   ),
@@ -182,9 +185,9 @@ class SellScreenNew extends BaseStatelessWidget<SellScreenNewController,
                                 await getAllTransactionsController
                                     .getChildCubit()
                                     .getAllTransactions(
-                                        getAllTransactionsController
-                                            .getChildCubit()
-                                            .createRequestData());
+                                    getAllTransactionsController
+                                        .getChildCubit()
+                                        .createRequestData());
                                 (context as Element).markNeedsBuild();
                               },
                               color: controllerColors[controller]!,
@@ -192,7 +195,7 @@ class SellScreenNew extends BaseStatelessWidget<SellScreenNewController,
                               onStateChanged: (sellScreenTemplateState) =>
                                   getCubit(context).emitState(state.copyWith(
                                       sellScreenTemplateState:
-                                          sellScreenTemplateState)),
+                                      sellScreenTemplateState)),
                             ),
                           );
                         }).toList(),
@@ -218,8 +221,8 @@ class SellScreenNew extends BaseStatelessWidget<SellScreenNewController,
   void _addNewControllerWithColor() {
     var newController = SellScreenTemplateController();
     Color assignedColor = AppColors.formTemplateColors[
-        sellScreenTemplateControllers.length %
-            AppColors.formTemplateColors.length];
+    sellScreenTemplateControllers.length %
+        AppColors.formTemplateColors.length];
     sellScreenTemplateControllers.add(newController);
     controllerColors[newController] = assignedColor;
   }

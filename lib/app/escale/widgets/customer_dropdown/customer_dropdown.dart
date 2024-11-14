@@ -1,14 +1,13 @@
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:basic/app/themes/edge_insets.dart';
+import 'package:basic/app/themes/fonts.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 import '../../../themes/app_colors.dart';
 import '../../../themes/input_styles.dart';
 import '../../models/customer_models.dart';
 import '/app/themes/borders.dart';
-import '/app/themes/edge_insets.dart';
-import 'package:go_router/go_router.dart';
 
 import 'customer_dropdown_controller.dart';
 import 'customer_dropdown_cubit.dart';
@@ -18,7 +17,7 @@ import '/app/core/widgets/base_stateless_widget.dart';
 class CustomerDropdown extends BaseStatelessWidget<CustomerDropdownController,
     CustomerDropdownCubit, CustomerDropdownState> {
   final Function(Customers?)? onChanged;
-  List<Customers> customers;
+  final List<Customers> customers;
 
   CustomerDropdown({
     Key? key,
@@ -47,38 +46,46 @@ class CustomerDropdown extends BaseStatelessWidget<CustomerDropdownController,
 
           return Container(
             width: dropdownWidth,
-            child: DropdownButtonFormField2<Customers>(
-              decoration: InputStyles.formTemplateInput(),
-              hint: Container(
-                width: dropdownWidth * 0.75, // Adjust width as needed
-                child: const Text(
-                  "Select Customer",
+            height: 40,
+            child: DropdownSearch<Customers>(
+              items: (filter, infiniteScrollProps) => customers, // Providing a list of Customers directly here
+              decoratorProps: DropDownDecoratorProps(
+                decoration: InputStyles.formTemplateInput(
+                  hintText: "Select Customer"
+                ),
+              ),
+              dropdownBuilder: (context, selectedItem) => Container(
+                width: dropdownWidth * 0.75,
+                child: Text(
+                  selectedItem?.name ?? '',
                   overflow: TextOverflow.ellipsis,
+                  style: TextStyle(color: AppColors.textHeading, fontSize: Fonts.fontSize16, fontWeight: Fonts.f500),
                 ),
               ),
-              items: customers.map((customer) {
-                return DropdownMenuItem<Customers>(
-                  value: customer,
-                  child: Container(
-                    width: dropdownWidth * 0.75,
-                    child: Text(customer.name!),
-                  ),
-                );
-              }).toList(),
+              popupProps: PopupProps.menu(
+                fit: FlexFit.loose,
+                menuProps: MenuProps(
+                  backgroundColor: AppColors.white,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: AppColors.bgLightBlue, width: 2)
+                  )
+                ),
+                showSearchBox: true,
+                constraints: BoxConstraints(maxHeight: 300, maxWidth: dropdownWidth),
+                scrollbarProps: ScrollbarProps(
+                  radius: Radius.circular(40),
+                  thickness: 4,
+                  thumbVisibility: true,
+                ),
+                searchDelay: Duration(seconds: 0),
+                searchFieldProps: TextFieldProps(
+                  style: TextStyle(fontSize: Fonts.fontSize14, fontWeight: Fonts.f400, color: AppColors.textHeading),
+                  decoration: InputStyles.formTemplateInput(hintText: 'search'),
+                ),
+              ),
               onChanged: onChanged,
-              dropdownStyleData: DropdownStyleData(
-                decoration: BoxDecoration(
-                  border: borders.b_2px_bgLightBlue,
-                  color: AppColors.white,
-                ),
-                maxHeight: 300,
-                width: dropdownWidth,
-                scrollbarTheme: ScrollbarThemeData(
-                  radius: const Radius.circular(40),
-                  thickness: WidgetStateProperty.all<double>(5),
-                  thumbVisibility: WidgetStateProperty.all<bool>(true),
-                ),
-              ),
+              itemAsString: (Customers? customer) => customer?.name ?? '',
+              compareFn: (item1, item2) => item1.id == item2.id,
             ),
           );
         },

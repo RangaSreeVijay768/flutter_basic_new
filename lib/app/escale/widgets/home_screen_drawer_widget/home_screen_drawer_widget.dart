@@ -52,6 +52,7 @@ class HomeScreenDrawerWidget extends BaseStatelessWidget<
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         padding: edge_insets_t_16,
@@ -347,6 +348,7 @@ class HomeScreenDrawerWidget extends BaseStatelessWidget<
                     ],
                   ),
                   Container(
+                    margin: edge_insets_b_50,
                     decoration: const BoxDecoration(boxShadow: [shadows.bs_grey]),
                     child: Row(
                       children: [
@@ -381,9 +383,6 @@ class HomeScreenDrawerWidget extends BaseStatelessWidget<
                             ))
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
                   ),
                 ],
               ),

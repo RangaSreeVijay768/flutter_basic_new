@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CreateTruckFormState {
-  Items? get items => throw _privateConstructorUsedError;
+  String? get items => throw _privateConstructorUsedError;
   ControlStatus? get formValid => throw _privateConstructorUsedError;
   CreateTruckResponse? get createTruckResponse =>
       throw _privateConstructorUsedError;
@@ -24,7 +24,7 @@ mixin _$CreateTruckFormState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Items? items,
+            String? items,
             ControlStatus? formValid,
             CreateTruckResponse? createTruckResponse,
             BooleanStatus createTruckStatus)
@@ -34,7 +34,7 @@ mixin _$CreateTruckFormState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            Items? items,
+            String? items,
             ControlStatus? formValid,
             CreateTruckResponse? createTruckResponse,
             BooleanStatus createTruckStatus)?
@@ -44,7 +44,7 @@ mixin _$CreateTruckFormState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            Items? items,
+            String? items,
             ControlStatus? formValid,
             CreateTruckResponse? createTruckResponse,
             BooleanStatus createTruckStatus)?
@@ -83,7 +83,7 @@ abstract class $CreateTruckFormStateCopyWith<$Res> {
       _$CreateTruckFormStateCopyWithImpl<$Res, CreateTruckFormState>;
   @useResult
   $Res call(
-      {Items? items,
+      {String? items,
       ControlStatus? formValid,
       CreateTruckResponse? createTruckResponse,
       BooleanStatus createTruckStatus});
@@ -114,7 +114,7 @@ class _$CreateTruckFormStateCopyWithImpl<$Res,
       items: freezed == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as Items?,
+              as String?,
       formValid: freezed == formValid
           ? _value.formValid
           : formValid // ignore: cast_nullable_to_non_nullable
@@ -140,7 +140,7 @@ abstract class _$$InitialImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Items? items,
+      {String? items,
       ControlStatus? formValid,
       CreateTruckResponse? createTruckResponse,
       BooleanStatus createTruckStatus});
@@ -168,7 +168,7 @@ class __$$InitialImplCopyWithImpl<$Res>
       items: freezed == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as Items?,
+              as String?,
       formValid: freezed == formValid
           ? _value.formValid
           : formValid // ignore: cast_nullable_to_non_nullable
@@ -195,7 +195,7 @@ class _$InitialImpl implements _Initial {
       this.createTruckStatus = BooleanStatus.initial});
 
   @override
-  final Items? items;
+  final String? items;
   @override
   final ControlStatus? formValid;
   @override
@@ -239,7 +239,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            Items? items,
+            String? items,
             ControlStatus? formValid,
             CreateTruckResponse? createTruckResponse,
             BooleanStatus createTruckStatus)
@@ -252,7 +252,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            Items? items,
+            String? items,
             ControlStatus? formValid,
             CreateTruckResponse? createTruckResponse,
             BooleanStatus createTruckStatus)?
@@ -266,7 +266,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            Items? items,
+            String? items,
             ControlStatus? formValid,
             CreateTruckResponse? createTruckResponse,
             BooleanStatus createTruckStatus)?
@@ -310,13 +310,13 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements CreateTruckFormState {
   const factory _Initial(
-      {final Items? items,
+      {final String? items,
       final ControlStatus? formValid,
       final CreateTruckResponse? createTruckResponse,
       final BooleanStatus createTruckStatus}) = _$InitialImpl;
 
   @override
-  Items? get items;
+  String? get items;
   @override
   ControlStatus? get formValid;
   @override

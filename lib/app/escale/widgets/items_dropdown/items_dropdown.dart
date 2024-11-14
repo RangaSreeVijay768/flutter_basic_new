@@ -60,6 +60,7 @@ class ItemsDropdown extends BaseStatelessWidget<ItemsDropdownController,
                 child: const Text(
                   "Select Item",
                   overflow: TextOverflow.ellipsis,
+                  style: TextStyle(color: AppColors.grey1),
                 ),
               ),
               items: items.isNotEmpty

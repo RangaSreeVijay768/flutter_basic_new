@@ -114,12 +114,12 @@ class GetAllTrucks
                                           children: [
                                             Icon(Icons.local_shipping),
                                             SizedBox(width: 8),
-                                            Text("${truck.name} - ${truck.number}",
+                                            Expanded(child: Text("${truck.name} - ${truck.number}",
                                               style: TextStyle(
                                                 fontWeight: Fonts.f500,
                                                 fontSize: Fonts.fontSize16,
                                               ),
-                                            ),
+                                            )),
                                           ],
                                         ),
                                         SizedBox(height: 8,),

@@ -12,6 +12,7 @@ import '../core/logger/log.dart';
 @singleton
 class UsbSerialService {
   UsbPort? _port;
+  final ValueNotifier<String> statusNotifier = ValueNotifier("Idle");  // Added statusNotifier
   String _status = "Idle";
   String _weight = "0.0";
   StreamSubscription<String>? _subscription;
@@ -45,13 +46,13 @@ class UsbSerialService {
 
     if (device == null) {
       _device = null;
-      _status = "Disconnected";
+      _updateStatus("Disconnected");  // Update status and notify listeners
       return;
     }
 
     _port = await device.create();
     if (!await _port!.open()) {
-      _status = "Failed to open port";
+      _updateStatus("Failed to open port");  // Update status and notify listeners
       return;
     }
 
@@ -75,7 +76,7 @@ class UsbSerialService {
       _weightController!.add(weight * 10);  // Emit weight on controller
     });
 
-    _status = "Connected";
+    _updateStatus("Connected");  // Update status and notify listeners
   }
 
   Future<void> connect() async {
@@ -87,12 +88,18 @@ class UsbSerialService {
       ShowToast.toast("Connected to scale", Colors.greenAccent);
     } else {
       logger.d("No devices found");
-      _status = "No USB devices found";
+      _updateStatus("No USB devices found");  // Update status and notify listeners
       ShowToast.toast(_status, Colors.redAccent);
     }
   }
 
   Future<void> disconnect() async {
     await _connectTo(null);
+  }
+
+  // Helper method to update status and notify listeners
+  void _updateStatus(String newStatus) {
+    _status = newStatus;
+    statusNotifier.value = newStatus;
   }
 }

@@ -3,6 +3,7 @@ import 'package:basic/app/core/services/usb_serial.dart';
 import 'package:basic/app/escale/screens/bluetooth_printer_screen/bluetooth_printer_screen.dart';
 import 'package:basic/app/escale/screens/escale_weight_screen/escale_weight_screen.dart';
 import 'package:basic/app/escale/screens/escale_weight_screen/escale_weight_screen2.dart';
+import 'package:basic/app/escale/screens/sell_page.dart';
 import 'package:basic/app/themes/borders.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
@@ -73,7 +74,10 @@ class PopupMenuButtonWidget
                   },
                 ),
                 PopupMenuItem(
-                  child: Text("Logout"),
+                  child: Text("drop search"),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => DropSearch()));
+                  },
                 ),
               ],
             ),

@@ -49,6 +49,7 @@ class TrucksDropdown extends BaseStatelessWidget<TrucksDropdownController,
                 child: const Text(
                   "Select Truck",
                   overflow: TextOverflow.ellipsis,
+                  style: TextStyle(color: AppColors.grey1),
                 ),
               ),
               items: trucks?.map((truck) => DropdownMenuItem<Trucks>(
