@@ -10,6 +10,7 @@ class SellScreenNewState with _$SellScreenNewState {
     @Default(BooleanStatus.initial) BooleanStatus getAllTrucksStatus,
     List<GetAllCustomersResponse>? getAllCustomersResponse,
     @Default(BooleanStatus.initial) BooleanStatus getAllCustomersStatus,
-    BluetoothPrintConnectDeviceState? bluetoothState
+    BluetoothPrintConnectDeviceState? bluetoothState,
+    @Default(BooleanStatus.initial) BooleanStatus printerConnectionStatus,
   }) = _Initial;
 }

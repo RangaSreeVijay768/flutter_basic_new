@@ -105,24 +105,23 @@ class SellScreenNew extends BaseStatelessWidget<SellScreenNewController,
                         ),
                       ),
                       IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      BluetoothPrinterScreen()));
+                        onPressed: state.printerConnectionStatus == BooleanStatus.pending
+                            ? () async {
+                          await getCubit(context).printerConnectionStatus();
+                        }
+                            : () async {
+                          // If the connection status is not pending, disconnect the printer
+                           getCubit(context).disconnect();
                         },
                         style: IconButton.styleFrom(
-                            side: BorderSide(
-                                color: state.bluetoothState
-                                    ?.bluetoothPrintConnectDeviceStatus ==
-                                    BooleanStatus.pending
-                                    ? AppColors.grey1
-                                    : AppColors.green,
-                                width: 2)),
-                        icon: state.bluetoothState
-                            ?.bluetoothPrintConnectDeviceStatus ==
-                            BooleanStatus.pending
+                          side: BorderSide(
+                            color: state.printerConnectionStatus == BooleanStatus.pending
+                                ? AppColors.grey1
+                                : AppColors.green,
+                            width: 2,
+                          ),
+                        ),
+                        icon: state.printerConnectionStatus == BooleanStatus.pending
                             ? Icon(
                           Icons.print_disabled_outlined,
                           color: AppColors.grey1,
@@ -131,7 +130,7 @@ class SellScreenNew extends BaseStatelessWidget<SellScreenNewController,
                           Icons.print_outlined,
                           color: AppColors.green,
                         ),
-                      ),
+                      )
                     ],
                   ),
                 )
@@ -174,6 +173,7 @@ class SellScreenNew extends BaseStatelessWidget<SellScreenNewController,
                               customers: state.getAllCustomersResponse ?? [],
                               trucks: state.getAllTrucksResponse ?? [],
                               controller: controller,
+                              printerConnectionStatus: state.printerConnectionStatus,
                               closeTemplate: () {
                                 sellScreenTemplateControllers
                                     .remove(controller);

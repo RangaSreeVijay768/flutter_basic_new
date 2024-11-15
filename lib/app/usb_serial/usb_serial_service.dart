@@ -73,22 +73,22 @@ class UsbSerialService {
       final weight = double.tryParse(formattedLine) ?? 0.0;
 
       _weight = (weight * 10).toStringAsFixed(2);
-      _weightController!.add(weight * 10);  // Emit weight on controller
+      _weightController!.add(weight * 10);
     });
 
-    _updateStatus("Connected");  // Update status and notify listeners
+    _updateStatus("Connected");
   }
 
   Future<void> connect() async {
     logger.d("Scanning for devices...");
-    await disconnect();  // Ensure we start with a fresh connection
+    await disconnect();
     List<UsbDevice> devices = await UsbSerial.listDevices();
     if (devices.isNotEmpty) {
       await _connectTo(devices.first);
       ShowToast.toast("Connected to scale", Colors.greenAccent);
     } else {
       logger.d("No devices found");
-      _updateStatus("No USB devices found");  // Update status and notify listeners
+      _updateStatus("No USB devices found");
       ShowToast.toast(_status, Colors.redAccent);
     }
   }
@@ -97,7 +97,6 @@ class UsbSerialService {
     await _connectTo(null);
   }
 
-  // Helper method to update status and notify listeners
   void _updateStatus(String newStatus) {
     _status = newStatus;
     statusNotifier.value = newStatus;

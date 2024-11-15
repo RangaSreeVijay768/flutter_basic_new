@@ -7,5 +7,6 @@ class BluetoothPrintBluetoothDevicesState
     BluetoothState? bluetoothState,
     @Default(false) bool connected,
     BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState,
+    SellScreenNewState? sellScreenNewState
   }) = _Initial;
 }

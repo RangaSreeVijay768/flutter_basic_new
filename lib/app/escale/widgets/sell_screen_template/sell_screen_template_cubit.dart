@@ -1,3 +1,4 @@
+import 'package:basic/app/bluetooth/services/bluetooth_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -26,33 +27,14 @@ class SellScreenTemplateCubit extends BaseCubit<SellScreenTemplateState> {
   }
 
 
-  void setSelectedTruck(Trucks? truck) {
-    emit(state.copyWith(selectedTruck: truck, selectedItem: null));
-  }
+  void setSelectedTruck(Trucks? truck) => emit(state.copyWith(selectedTruck: truck, selectedItem: null));
+  void setSelectedItem(String? item) => emit(state.copyWith(selectedItem: item));
+  void setSelectedCustomer(Customers? customer) => emit(state.copyWith(selectedCustomer: customer));
+  void setLotSize(int? lotSize) => emit(state.copyWith(lotSize: lotSize));
+  void setConstPrice(double? constPrice) => emit(state.copyWith(constPrice: constPrice));
+  void setItemWeight(double? itemWeight) => emit(state.copyWith(itemWeight: itemWeight));
+  void setPurchaseType(String purchaseType) => emit(state.copyWith(purchaseType: purchaseType));
 
-  void setSelectedItem(String? item) {
-    emit(state.copyWith(selectedItem: item));
-  }
-
-  void setSelectedCustomer(Customers? customer) {
-    emit(state.copyWith(selectedCustomer: customer));
-  }
-
-  void setLotSize(int? lotSize) {
-    emit(state.copyWith(lotSize: lotSize));
-  }
-
-  void setConstPrice(double? constPrice) {
-    emit(state.copyWith(constPrice: constPrice));
-  }
-
-  void setItemWeight(double? itemWeight) {
-    emit(state.copyWith(itemWeight: itemWeight));
-  }
-
-  void setPurchaseType(String purchaseType) {
-    emit(state.copyWith(purchaseType: purchaseType));
-  }
 
   CreateTransactionRequest createRequestData({
     String? trucknumber,
@@ -107,17 +89,4 @@ class SellScreenTemplateCubit extends BaseCubit<SellScreenTemplateState> {
   }
 
 
-
-  bool isFormComplete() {
-    return state.selectedTruck != null &&
-        state.selectedItem != null &&
-        state.selectedCustomer != null &&
-        state.itemWeight != null &&
-        state.constPrice != null &&
-        state.lotSize != null;
-  }
-
-
-  void clearFormFields() {
-  }
 }

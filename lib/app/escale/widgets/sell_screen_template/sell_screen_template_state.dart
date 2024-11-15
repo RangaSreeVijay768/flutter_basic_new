@@ -14,6 +14,7 @@ class SellScreenTemplateState with _$SellScreenTemplateState {
     @Default(BooleanStatus.initial) BooleanStatus createTransactionStatus,
     BluetoothState? bluetoothState,
     BluetoothPrintPrintReceiptState? bluetoothPrintPrintReceiptState,
+    @Default(BooleanStatus.initial) BooleanStatus printerConnectionStatus,
     GetTransactionsByCustomerIdState? getTransactionsByCustomerIdState,
     List<GetTransactionsByCustomerIdResponse>? getTransactionsByCustomerIdResponse
   }) = _Initial;

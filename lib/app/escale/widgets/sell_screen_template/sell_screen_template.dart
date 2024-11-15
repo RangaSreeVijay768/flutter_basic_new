@@ -38,6 +38,7 @@ class SellScreenTemplate
   final Color? color;
   List<Trucks> trucks;
   List<Customers> customers;
+  BooleanStatus? printerConnectionStatus;
 
   SellScreenTemplate(
       {Key? key,
@@ -46,6 +47,7 @@ class SellScreenTemplate
         this.onTransactionCreated,
         this.closeTemplate,
         this.color,
+        this.printerConnectionStatus,
         required this.customers,
         required this.trucks})
       : super(key: key);
@@ -172,7 +174,7 @@ class SellScreenTemplate
                                     )
                                 ),
                                 onPressed:
-                                (state.bluetoothState?.bluetoothStatus ==
+                                (printerConnectionStatus ==
                                     BooleanStatus.pending ||
                                     state.selectedCustomer == null)
                                     ? null

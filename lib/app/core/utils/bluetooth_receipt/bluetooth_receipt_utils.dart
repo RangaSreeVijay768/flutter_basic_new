@@ -16,8 +16,8 @@ class BluetoothReceiptUtils{
     final now = DateTime.now();
     String formattedDate = "${now.day.toString().padLeft(1, '0')}${now.month.toString().padLeft(1, '0')}${now.year.toString().substring(1)}";
 
-    // This generates the content for the barcode but does not print it.
-    return "$customerIdStr$formattedDate";  // Content for the barcode only.
+    // return "$customerIdStr$formattedDate";
+    return "       ";
   }
 
 
@@ -63,7 +63,7 @@ class BluetoothReceiptUtils{
     list.add(LineText(linefeed: 1));
     list.add(LineText(type: LineText.TYPE_TEXT, content: '--------------------------------', align: LineText.ALIGN_CENTER, fontZoom: 1, linefeed: 1));
 
-    list.add(LineText(type: LineText.TYPE_BARCODE, content: barcodeContent, align: LineText.ALIGN_CENTER, height: 60, width: 1, linefeed: 1));
+    list.add(LineText(type: LineText.TYPE_BARCODE, content: barcodeContent, align: LineText.ALIGN_CENTER, width: 1, linefeed: 0));
 
     list.add(LineText(type: LineText.TYPE_TEXT, content: "Powered By @Sabzisetu", align: LineText.ALIGN_CENTER, fontZoom: 1, linefeed: 1));
     list.add(LineText(type: LineText.TYPE_TEXT, content: '--------------------------------', align: LineText.ALIGN_CENTER, fontZoom: 1, linefeed: 1));

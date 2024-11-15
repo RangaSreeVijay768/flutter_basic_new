@@ -30,6 +30,8 @@ mixin _$SellScreenTemplateState {
   BluetoothState? get bluetoothState => throw _privateConstructorUsedError;
   BluetoothPrintPrintReceiptState? get bluetoothPrintPrintReceiptState =>
       throw _privateConstructorUsedError;
+  BooleanStatus get printerConnectionStatus =>
+      throw _privateConstructorUsedError;
   GetTransactionsByCustomerIdState? get getTransactionsByCustomerIdState =>
       throw _privateConstructorUsedError;
   List<GetTransactionsByCustomerIdResponse>?
@@ -49,6 +51,7 @@ mixin _$SellScreenTemplateState {
             BooleanStatus createTransactionStatus,
             BluetoothState? bluetoothState,
             BluetoothPrintPrintReceiptState? bluetoothPrintPrintReceiptState,
+            BooleanStatus printerConnectionStatus,
             GetTransactionsByCustomerIdState? getTransactionsByCustomerIdState,
             List<GetTransactionsByCustomerIdResponse>?
                 getTransactionsByCustomerIdResponse)
@@ -69,6 +72,7 @@ mixin _$SellScreenTemplateState {
             BooleanStatus createTransactionStatus,
             BluetoothState? bluetoothState,
             BluetoothPrintPrintReceiptState? bluetoothPrintPrintReceiptState,
+            BooleanStatus printerConnectionStatus,
             GetTransactionsByCustomerIdState? getTransactionsByCustomerIdState,
             List<GetTransactionsByCustomerIdResponse>?
                 getTransactionsByCustomerIdResponse)?
@@ -89,6 +93,7 @@ mixin _$SellScreenTemplateState {
             BooleanStatus createTransactionStatus,
             BluetoothState? bluetoothState,
             BluetoothPrintPrintReceiptState? bluetoothPrintPrintReceiptState,
+            BooleanStatus printerConnectionStatus,
             GetTransactionsByCustomerIdState? getTransactionsByCustomerIdState,
             List<GetTransactionsByCustomerIdResponse>?
                 getTransactionsByCustomerIdResponse)?
@@ -138,6 +143,7 @@ abstract class $SellScreenTemplateStateCopyWith<$Res> {
       BooleanStatus createTransactionStatus,
       BluetoothState? bluetoothState,
       BluetoothPrintPrintReceiptState? bluetoothPrintPrintReceiptState,
+      BooleanStatus printerConnectionStatus,
       GetTransactionsByCustomerIdState? getTransactionsByCustomerIdState,
       List<GetTransactionsByCustomerIdResponse>?
           getTransactionsByCustomerIdResponse});
@@ -176,6 +182,7 @@ class _$SellScreenTemplateStateCopyWithImpl<$Res,
     Object? createTransactionStatus = null,
     Object? bluetoothState = freezed,
     Object? bluetoothPrintPrintReceiptState = freezed,
+    Object? printerConnectionStatus = null,
     Object? getTransactionsByCustomerIdState = freezed,
     Object? getTransactionsByCustomerIdResponse = freezed,
   }) {
@@ -225,6 +232,10 @@ class _$SellScreenTemplateStateCopyWithImpl<$Res,
           ? _value.bluetoothPrintPrintReceiptState
           : bluetoothPrintPrintReceiptState // ignore: cast_nullable_to_non_nullable
               as BluetoothPrintPrintReceiptState?,
+      printerConnectionStatus: null == printerConnectionStatus
+          ? _value.printerConnectionStatus
+          : printerConnectionStatus // ignore: cast_nullable_to_non_nullable
+              as BooleanStatus,
       getTransactionsByCustomerIdState: freezed ==
               getTransactionsByCustomerIdState
           ? _value.getTransactionsByCustomerIdState
@@ -307,6 +318,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       BooleanStatus createTransactionStatus,
       BluetoothState? bluetoothState,
       BluetoothPrintPrintReceiptState? bluetoothPrintPrintReceiptState,
+      BooleanStatus printerConnectionStatus,
       GetTransactionsByCustomerIdState? getTransactionsByCustomerIdState,
       List<GetTransactionsByCustomerIdResponse>?
           getTransactionsByCustomerIdResponse});
@@ -345,6 +357,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? createTransactionStatus = null,
     Object? bluetoothState = freezed,
     Object? bluetoothPrintPrintReceiptState = freezed,
+    Object? printerConnectionStatus = null,
     Object? getTransactionsByCustomerIdState = freezed,
     Object? getTransactionsByCustomerIdResponse = freezed,
   }) {
@@ -394,6 +407,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.bluetoothPrintPrintReceiptState
           : bluetoothPrintPrintReceiptState // ignore: cast_nullable_to_non_nullable
               as BluetoothPrintPrintReceiptState?,
+      printerConnectionStatus: null == printerConnectionStatus
+          ? _value.printerConnectionStatus
+          : printerConnectionStatus // ignore: cast_nullable_to_non_nullable
+              as BooleanStatus,
       getTransactionsByCustomerIdState: freezed ==
               getTransactionsByCustomerIdState
           ? _value.getTransactionsByCustomerIdState
@@ -423,6 +440,7 @@ class _$InitialImpl implements _Initial {
       this.createTransactionStatus = BooleanStatus.initial,
       this.bluetoothState,
       this.bluetoothPrintPrintReceiptState,
+      this.printerConnectionStatus = BooleanStatus.initial,
       this.getTransactionsByCustomerIdState,
       final List<GetTransactionsByCustomerIdResponse>?
           getTransactionsByCustomerIdResponse})
@@ -453,6 +471,9 @@ class _$InitialImpl implements _Initial {
   @override
   final BluetoothPrintPrintReceiptState? bluetoothPrintPrintReceiptState;
   @override
+  @JsonKey()
+  final BooleanStatus printerConnectionStatus;
+  @override
   final GetTransactionsByCustomerIdState? getTransactionsByCustomerIdState;
   final List<GetTransactionsByCustomerIdResponse>?
       _getTransactionsByCustomerIdResponse;
@@ -469,7 +490,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'SellScreenTemplateState.initial(selectedTruck: $selectedTruck, selectedItem: $selectedItem, selectedCustomer: $selectedCustomer, purchaseType: $purchaseType, lotSize: $lotSize, constPrice: $constPrice, itemWeight: $itemWeight, createTransactionResponse: $createTransactionResponse, createTransactionStatus: $createTransactionStatus, bluetoothState: $bluetoothState, bluetoothPrintPrintReceiptState: $bluetoothPrintPrintReceiptState, getTransactionsByCustomerIdState: $getTransactionsByCustomerIdState, getTransactionsByCustomerIdResponse: $getTransactionsByCustomerIdResponse)';
+    return 'SellScreenTemplateState.initial(selectedTruck: $selectedTruck, selectedItem: $selectedItem, selectedCustomer: $selectedCustomer, purchaseType: $purchaseType, lotSize: $lotSize, constPrice: $constPrice, itemWeight: $itemWeight, createTransactionResponse: $createTransactionResponse, createTransactionStatus: $createTransactionStatus, bluetoothState: $bluetoothState, bluetoothPrintPrintReceiptState: $bluetoothPrintPrintReceiptState, printerConnectionStatus: $printerConnectionStatus, getTransactionsByCustomerIdState: $getTransactionsByCustomerIdState, getTransactionsByCustomerIdResponse: $getTransactionsByCustomerIdResponse)';
   }
 
   @override
@@ -502,6 +523,9 @@ class _$InitialImpl implements _Initial {
                     bluetoothPrintPrintReceiptState) ||
                 other.bluetoothPrintPrintReceiptState ==
                     bluetoothPrintPrintReceiptState) &&
+            (identical(
+                    other.printerConnectionStatus, printerConnectionStatus) ||
+                other.printerConnectionStatus == printerConnectionStatus) &&
             (identical(other.getTransactionsByCustomerIdState,
                     getTransactionsByCustomerIdState) ||
                 other.getTransactionsByCustomerIdState ==
@@ -525,6 +549,7 @@ class _$InitialImpl implements _Initial {
       createTransactionStatus,
       bluetoothState,
       bluetoothPrintPrintReceiptState,
+      printerConnectionStatus,
       getTransactionsByCustomerIdState,
       const DeepCollectionEquality()
           .hash(_getTransactionsByCustomerIdResponse));
@@ -552,6 +577,7 @@ class _$InitialImpl implements _Initial {
             BooleanStatus createTransactionStatus,
             BluetoothState? bluetoothState,
             BluetoothPrintPrintReceiptState? bluetoothPrintPrintReceiptState,
+            BooleanStatus printerConnectionStatus,
             GetTransactionsByCustomerIdState? getTransactionsByCustomerIdState,
             List<GetTransactionsByCustomerIdResponse>?
                 getTransactionsByCustomerIdResponse)
@@ -569,6 +595,7 @@ class _$InitialImpl implements _Initial {
         createTransactionStatus,
         bluetoothState,
         bluetoothPrintPrintReceiptState,
+        printerConnectionStatus,
         getTransactionsByCustomerIdState,
         getTransactionsByCustomerIdResponse);
   }
@@ -588,6 +615,7 @@ class _$InitialImpl implements _Initial {
             BooleanStatus createTransactionStatus,
             BluetoothState? bluetoothState,
             BluetoothPrintPrintReceiptState? bluetoothPrintPrintReceiptState,
+            BooleanStatus printerConnectionStatus,
             GetTransactionsByCustomerIdState? getTransactionsByCustomerIdState,
             List<GetTransactionsByCustomerIdResponse>?
                 getTransactionsByCustomerIdResponse)?
@@ -605,6 +633,7 @@ class _$InitialImpl implements _Initial {
         createTransactionStatus,
         bluetoothState,
         bluetoothPrintPrintReceiptState,
+        printerConnectionStatus,
         getTransactionsByCustomerIdState,
         getTransactionsByCustomerIdResponse);
   }
@@ -624,6 +653,7 @@ class _$InitialImpl implements _Initial {
             BooleanStatus createTransactionStatus,
             BluetoothState? bluetoothState,
             BluetoothPrintPrintReceiptState? bluetoothPrintPrintReceiptState,
+            BooleanStatus printerConnectionStatus,
             GetTransactionsByCustomerIdState? getTransactionsByCustomerIdState,
             List<GetTransactionsByCustomerIdResponse>?
                 getTransactionsByCustomerIdResponse)?
@@ -643,6 +673,7 @@ class _$InitialImpl implements _Initial {
           createTransactionStatus,
           bluetoothState,
           bluetoothPrintPrintReceiptState,
+          printerConnectionStatus,
           getTransactionsByCustomerIdState,
           getTransactionsByCustomerIdResponse);
     }
@@ -691,6 +722,7 @@ abstract class _Initial implements SellScreenTemplateState {
       final BooleanStatus createTransactionStatus,
       final BluetoothState? bluetoothState,
       final BluetoothPrintPrintReceiptState? bluetoothPrintPrintReceiptState,
+      final BooleanStatus printerConnectionStatus,
       final GetTransactionsByCustomerIdState? getTransactionsByCustomerIdState,
       final List<GetTransactionsByCustomerIdResponse>?
           getTransactionsByCustomerIdResponse}) = _$InitialImpl;
@@ -717,6 +749,8 @@ abstract class _Initial implements SellScreenTemplateState {
   BluetoothState? get bluetoothState;
   @override
   BluetoothPrintPrintReceiptState? get bluetoothPrintPrintReceiptState;
+  @override
+  BooleanStatus get printerConnectionStatus;
   @override
   GetTransactionsByCustomerIdState? get getTransactionsByCustomerIdState;
   @override

@@ -61,22 +61,23 @@ class PopupMenuButtonWidget
               offset: const Offset(0.0, 60.0),
               itemBuilder: (BuildContext context) =>
               [
+                // PopupMenuItem(
+                //   child: Text("Connect Scale"),
+                //   onTap: () async{
+                //     connectUsbSerial();
+                //   },
+                // ),
                 PopupMenuItem(
-                  child: Text("Connect Scale"),
-                  onTap: () async{
-                    connectUsbSerial();
-                  },
-                ),
-                PopupMenuItem(
-                  child: Text("Printer"),
+                  child: Text("PRINTER"),
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => BluetoothPrinterScreen()));
                   },
                 ),
                 PopupMenuItem(
-                  child: Text("drop search"),
+                  child: Text("LOGOUT"),
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => DropSearch()));
+                    getCubit(context).logout();
+                    context.go("/welcome");
                   },
                 ),
               ],

@@ -1,3 +1,4 @@
+import 'package:basic/app/escale/screens/sell_screen_new/sell_screen_new_cubit.dart';
 import 'package:bloc/bloc.dart';
 import 'package:bluetooth_print/bluetooth_print.dart';
 import 'package:bluetooth_print/bluetooth_print_model.dart';

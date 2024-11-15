@@ -24,6 +24,15 @@ class BluetoothService {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setString("last_connected_bluetooth", address);
   }
+  Future<void> saveConnectionStatus(bool status) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setBool("is_connected", status);
+  }
+  Future<bool> getConnectionStatus() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.getBool("is_connected") ?? false;
+  }
+
 
   Future<String?> getLastConnectionId() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -62,16 +71,25 @@ class BluetoothService {
     bool connected=await bluetoothPrint.connect(bluetoothDevice);
     if (connected) {
       await saveLastConnectionId(bluetoothDevice.address!);
-
+      await saveConnectionStatus(true);
     }
     return Future.value(connected);
   }
 
-  Future<dynamic> disconnectDevice() {
-    return bluetoothPrint.disconnect();
+  Future<dynamic> disconnectDevice() async {
+    bool disconnected = await bluetoothPrint.disconnect();
+    if (disconnected) {
+      await saveConnectionStatus(false);
+    }
+    return Future.value(disconnected);
   }
+
 
   Future<dynamic> printReceipt({required config, required data}) {
     return bluetoothPrint.printReceipt(config, data);
   }
+
+
+
+
 }

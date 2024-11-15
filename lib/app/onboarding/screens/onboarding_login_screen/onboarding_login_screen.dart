@@ -1,3 +1,4 @@
+import 'package:basic/app/core/utils/authentication/authentication_utils.dart';
 import 'package:basic/app/onboarding/widgets/onboarding_login_form_widget/onboarding_login_form_widget.dart';
 import 'package:basic/app/themes/borders.dart';
 import 'package:basic/app/themes/shadows.dart';
@@ -93,6 +94,7 @@ class OnboardingLoginScreen extends BaseStatelessWidget<
                                                 .createRequestData());
                                     BlocProvider.of<AuthenticationCubit>(context)
                                         .saveUserAccount(userAccount);
+                                    AuthenticationUtils.getUserAccountFromSharedPreferences();
                                     context.go("/home");
                                   },
                             child: state.loadingButton!

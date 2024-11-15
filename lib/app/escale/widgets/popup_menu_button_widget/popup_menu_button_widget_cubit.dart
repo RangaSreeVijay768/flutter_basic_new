@@ -1,3 +1,4 @@
+import 'package:basic/app/user_accounts/services/user_account_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:basic/app/core/blocs/base_cubit.dart';
@@ -10,6 +11,13 @@ part 'popup_menu_button_widget_state.dart';
 part 'popup_menu_button_widget_cubit.freezed.dart';
 
 class PopupMenuButtonWidgetCubit extends BaseCubit<PopupMenuButtonWidgetState> {
+  late UserAccountService userAccountService;
   PopupMenuButtonWidgetCubit({required super.context})
-      : super(initialState: PopupMenuButtonWidgetState.initial());
+      : super(initialState: PopupMenuButtonWidgetState.initial()){
+    userAccountService=GetIt.instance<UserAccountService>();
+  }
+
+  logout(){
+    userAccountService.deleteUserAuthTokenFromSharedPreferences();
+  }
 }

@@ -29,6 +29,8 @@ mixin _$SellScreenNewState {
   BooleanStatus get getAllCustomersStatus => throw _privateConstructorUsedError;
   BluetoothPrintConnectDeviceState? get bluetoothState =>
       throw _privateConstructorUsedError;
+  BooleanStatus get printerConnectionStatus =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -39,7 +41,8 @@ mixin _$SellScreenNewState {
             BooleanStatus getAllTrucksStatus,
             List<GetAllCustomersResponse>? getAllCustomersResponse,
             BooleanStatus getAllCustomersStatus,
-            BluetoothPrintConnectDeviceState? bluetoothState)
+            BluetoothPrintConnectDeviceState? bluetoothState,
+            BooleanStatus printerConnectionStatus)
         initial,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,7 +56,8 @@ mixin _$SellScreenNewState {
             BooleanStatus getAllTrucksStatus,
             List<GetAllCustomersResponse>? getAllCustomersResponse,
             BooleanStatus getAllCustomersStatus,
-            BluetoothPrintConnectDeviceState? bluetoothState)?
+            BluetoothPrintConnectDeviceState? bluetoothState,
+            BooleanStatus printerConnectionStatus)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
@@ -67,7 +71,8 @@ mixin _$SellScreenNewState {
             BooleanStatus getAllTrucksStatus,
             List<GetAllCustomersResponse>? getAllCustomersResponse,
             BooleanStatus getAllCustomersStatus,
-            BluetoothPrintConnectDeviceState? bluetoothState)?
+            BluetoothPrintConnectDeviceState? bluetoothState,
+            BooleanStatus printerConnectionStatus)?
         initial,
     required TResult orElse(),
   }) =>
@@ -110,7 +115,8 @@ abstract class $SellScreenNewStateCopyWith<$Res> {
       BooleanStatus getAllTrucksStatus,
       List<GetAllCustomersResponse>? getAllCustomersResponse,
       BooleanStatus getAllCustomersStatus,
-      BluetoothPrintConnectDeviceState? bluetoothState});
+      BluetoothPrintConnectDeviceState? bluetoothState,
+      BooleanStatus printerConnectionStatus});
 
   $GetAllTransactionsStateCopyWith<$Res>? get getAllTransactionsState;
   $SellScreenTemplateStateCopyWith<$Res>? get sellScreenTemplateState;
@@ -140,6 +146,7 @@ class _$SellScreenNewStateCopyWithImpl<$Res, $Val extends SellScreenNewState>
     Object? getAllCustomersResponse = freezed,
     Object? getAllCustomersStatus = null,
     Object? bluetoothState = freezed,
+    Object? printerConnectionStatus = null,
   }) {
     return _then(_value.copyWith(
       getAllTransactionsState: freezed == getAllTransactionsState
@@ -174,6 +181,10 @@ class _$SellScreenNewStateCopyWithImpl<$Res, $Val extends SellScreenNewState>
           ? _value.bluetoothState
           : bluetoothState // ignore: cast_nullable_to_non_nullable
               as BluetoothPrintConnectDeviceState?,
+      printerConnectionStatus: null == printerConnectionStatus
+          ? _value.printerConnectionStatus
+          : printerConnectionStatus // ignore: cast_nullable_to_non_nullable
+              as BooleanStatus,
     ) as $Val);
   }
 
@@ -239,7 +250,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       BooleanStatus getAllTrucksStatus,
       List<GetAllCustomersResponse>? getAllCustomersResponse,
       BooleanStatus getAllCustomersStatus,
-      BluetoothPrintConnectDeviceState? bluetoothState});
+      BluetoothPrintConnectDeviceState? bluetoothState,
+      BooleanStatus printerConnectionStatus});
 
   @override
   $GetAllTransactionsStateCopyWith<$Res>? get getAllTransactionsState;
@@ -270,6 +282,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? getAllCustomersResponse = freezed,
     Object? getAllCustomersStatus = null,
     Object? bluetoothState = freezed,
+    Object? printerConnectionStatus = null,
   }) {
     return _then(_$InitialImpl(
       getAllTransactionsState: freezed == getAllTransactionsState
@@ -304,6 +317,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.bluetoothState
           : bluetoothState // ignore: cast_nullable_to_non_nullable
               as BluetoothPrintConnectDeviceState?,
+      printerConnectionStatus: null == printerConnectionStatus
+          ? _value.printerConnectionStatus
+          : printerConnectionStatus // ignore: cast_nullable_to_non_nullable
+              as BooleanStatus,
     ));
   }
 }
@@ -319,7 +336,8 @@ class _$InitialImpl implements _Initial {
       this.getAllTrucksStatus = BooleanStatus.initial,
       final List<GetAllCustomersResponse>? getAllCustomersResponse,
       this.getAllCustomersStatus = BooleanStatus.initial,
-      this.bluetoothState})
+      this.bluetoothState,
+      this.printerConnectionStatus = BooleanStatus.initial})
       : _getAllTrucksResponse = getAllTrucksResponse,
         _getAllCustomersResponse = getAllCustomersResponse;
 
@@ -359,10 +377,13 @@ class _$InitialImpl implements _Initial {
   final BooleanStatus getAllCustomersStatus;
   @override
   final BluetoothPrintConnectDeviceState? bluetoothState;
+  @override
+  @JsonKey()
+  final BooleanStatus printerConnectionStatus;
 
   @override
   String toString() {
-    return 'SellScreenNewState.initial(getAllTransactionsState: $getAllTransactionsState, sellScreenTemplateState: $sellScreenTemplateState, loadingButton: $loadingButton, getAllTrucksResponse: $getAllTrucksResponse, getAllTrucksStatus: $getAllTrucksStatus, getAllCustomersResponse: $getAllCustomersResponse, getAllCustomersStatus: $getAllCustomersStatus, bluetoothState: $bluetoothState)';
+    return 'SellScreenNewState.initial(getAllTransactionsState: $getAllTransactionsState, sellScreenTemplateState: $sellScreenTemplateState, loadingButton: $loadingButton, getAllTrucksResponse: $getAllTrucksResponse, getAllTrucksStatus: $getAllTrucksStatus, getAllCustomersResponse: $getAllCustomersResponse, getAllCustomersStatus: $getAllCustomersStatus, bluetoothState: $bluetoothState, printerConnectionStatus: $printerConnectionStatus)';
   }
 
   @override
@@ -387,7 +408,10 @@ class _$InitialImpl implements _Initial {
             (identical(other.getAllCustomersStatus, getAllCustomersStatus) ||
                 other.getAllCustomersStatus == getAllCustomersStatus) &&
             (identical(other.bluetoothState, bluetoothState) ||
-                other.bluetoothState == bluetoothState));
+                other.bluetoothState == bluetoothState) &&
+            (identical(
+                    other.printerConnectionStatus, printerConnectionStatus) ||
+                other.printerConnectionStatus == printerConnectionStatus));
   }
 
   @override
@@ -400,7 +424,8 @@ class _$InitialImpl implements _Initial {
       getAllTrucksStatus,
       const DeepCollectionEquality().hash(_getAllCustomersResponse),
       getAllCustomersStatus,
-      bluetoothState);
+      bluetoothState,
+      printerConnectionStatus);
 
   /// Create a copy of SellScreenNewState
   /// with the given fields replaced by the non-null parameter values.
@@ -421,7 +446,8 @@ class _$InitialImpl implements _Initial {
             BooleanStatus getAllTrucksStatus,
             List<GetAllCustomersResponse>? getAllCustomersResponse,
             BooleanStatus getAllCustomersStatus,
-            BluetoothPrintConnectDeviceState? bluetoothState)
+            BluetoothPrintConnectDeviceState? bluetoothState,
+            BooleanStatus printerConnectionStatus)
         initial,
   }) {
     return initial(
@@ -432,7 +458,8 @@ class _$InitialImpl implements _Initial {
         getAllTrucksStatus,
         getAllCustomersResponse,
         getAllCustomersStatus,
-        bluetoothState);
+        bluetoothState,
+        printerConnectionStatus);
   }
 
   @override
@@ -446,7 +473,8 @@ class _$InitialImpl implements _Initial {
             BooleanStatus getAllTrucksStatus,
             List<GetAllCustomersResponse>? getAllCustomersResponse,
             BooleanStatus getAllCustomersStatus,
-            BluetoothPrintConnectDeviceState? bluetoothState)?
+            BluetoothPrintConnectDeviceState? bluetoothState,
+            BooleanStatus printerConnectionStatus)?
         initial,
   }) {
     return initial?.call(
@@ -457,7 +485,8 @@ class _$InitialImpl implements _Initial {
         getAllTrucksStatus,
         getAllCustomersResponse,
         getAllCustomersStatus,
-        bluetoothState);
+        bluetoothState,
+        printerConnectionStatus);
   }
 
   @override
@@ -471,7 +500,8 @@ class _$InitialImpl implements _Initial {
             BooleanStatus getAllTrucksStatus,
             List<GetAllCustomersResponse>? getAllCustomersResponse,
             BooleanStatus getAllCustomersStatus,
-            BluetoothPrintConnectDeviceState? bluetoothState)?
+            BluetoothPrintConnectDeviceState? bluetoothState,
+            BooleanStatus printerConnectionStatus)?
         initial,
     required TResult orElse(),
   }) {
@@ -484,7 +514,8 @@ class _$InitialImpl implements _Initial {
           getAllTrucksStatus,
           getAllCustomersResponse,
           getAllCustomersStatus,
-          bluetoothState);
+          bluetoothState,
+          printerConnectionStatus);
     }
     return orElse();
   }
@@ -527,7 +558,8 @@ abstract class _Initial implements SellScreenNewState {
       final BooleanStatus getAllTrucksStatus,
       final List<GetAllCustomersResponse>? getAllCustomersResponse,
       final BooleanStatus getAllCustomersStatus,
-      final BluetoothPrintConnectDeviceState? bluetoothState}) = _$InitialImpl;
+      final BluetoothPrintConnectDeviceState? bluetoothState,
+      final BooleanStatus printerConnectionStatus}) = _$InitialImpl;
 
   @override
   GetAllTransactionsState? get getAllTransactionsState;
@@ -545,6 +577,8 @@ abstract class _Initial implements SellScreenNewState {
   BooleanStatus get getAllCustomersStatus;
   @override
   BluetoothPrintConnectDeviceState? get bluetoothState;
+  @override
+  BooleanStatus get printerConnectionStatus;
 
   /// Create a copy of SellScreenNewState
   /// with the given fields replaced by the non-null parameter values.

@@ -20,24 +20,35 @@ mixin _$BluetoothPrintBluetoothDevicesState {
   bool get connected => throw _privateConstructorUsedError;
   BluetoothPrintConnectDeviceState? get bluetoothPrintConnectDeviceState =>
       throw _privateConstructorUsedError;
+  SellScreenNewState? get sellScreenNewState =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BluetoothState? bluetoothState, bool connected,
-            BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState)
+    required TResult Function(
+            BluetoothState? bluetoothState,
+            bool connected,
+            BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState,
+            SellScreenNewState? sellScreenNewState)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BluetoothState? bluetoothState, bool connected,
-            BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState)?
+    TResult? Function(
+            BluetoothState? bluetoothState,
+            bool connected,
+            BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState,
+            SellScreenNewState? sellScreenNewState)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BluetoothState? bluetoothState, bool connected,
-            BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState)?
+    TResult Function(
+            BluetoothState? bluetoothState,
+            bool connected,
+            BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState,
+            SellScreenNewState? sellScreenNewState)?
         initial,
     required TResult orElse(),
   }) =>
@@ -78,11 +89,13 @@ abstract class $BluetoothPrintBluetoothDevicesStateCopyWith<$Res> {
   $Res call(
       {BluetoothState? bluetoothState,
       bool connected,
-      BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState});
+      BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState,
+      SellScreenNewState? sellScreenNewState});
 
   $BluetoothStateCopyWith<$Res>? get bluetoothState;
   $BluetoothPrintConnectDeviceStateCopyWith<$Res>?
       get bluetoothPrintConnectDeviceState;
+  $SellScreenNewStateCopyWith<$Res>? get sellScreenNewState;
 }
 
 /// @nodoc
@@ -104,6 +117,7 @@ class _$BluetoothPrintBluetoothDevicesStateCopyWithImpl<$Res,
     Object? bluetoothState = freezed,
     Object? connected = null,
     Object? bluetoothPrintConnectDeviceState = freezed,
+    Object? sellScreenNewState = freezed,
   }) {
     return _then(_value.copyWith(
       bluetoothState: freezed == bluetoothState
@@ -119,6 +133,10 @@ class _$BluetoothPrintBluetoothDevicesStateCopyWithImpl<$Res,
           ? _value.bluetoothPrintConnectDeviceState
           : bluetoothPrintConnectDeviceState // ignore: cast_nullable_to_non_nullable
               as BluetoothPrintConnectDeviceState?,
+      sellScreenNewState: freezed == sellScreenNewState
+          ? _value.sellScreenNewState
+          : sellScreenNewState // ignore: cast_nullable_to_non_nullable
+              as SellScreenNewState?,
     ) as $Val);
   }
 
@@ -152,6 +170,21 @@ class _$BluetoothPrintBluetoothDevicesStateCopyWithImpl<$Res,
           _value.copyWith(bluetoothPrintConnectDeviceState: value) as $Val);
     });
   }
+
+  /// Create a copy of BluetoothPrintBluetoothDevicesState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SellScreenNewStateCopyWith<$Res>? get sellScreenNewState {
+    if (_value.sellScreenNewState == null) {
+      return null;
+    }
+
+    return $SellScreenNewStateCopyWith<$Res>(_value.sellScreenNewState!,
+        (value) {
+      return _then(_value.copyWith(sellScreenNewState: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -165,13 +198,16 @@ abstract class _$$InitialImplCopyWith<$Res>
   $Res call(
       {BluetoothState? bluetoothState,
       bool connected,
-      BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState});
+      BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState,
+      SellScreenNewState? sellScreenNewState});
 
   @override
   $BluetoothStateCopyWith<$Res>? get bluetoothState;
   @override
   $BluetoothPrintConnectDeviceStateCopyWith<$Res>?
       get bluetoothPrintConnectDeviceState;
+  @override
+  $SellScreenNewStateCopyWith<$Res>? get sellScreenNewState;
 }
 
 /// @nodoc
@@ -190,6 +226,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? bluetoothState = freezed,
     Object? connected = null,
     Object? bluetoothPrintConnectDeviceState = freezed,
+    Object? sellScreenNewState = freezed,
   }) {
     return _then(_$InitialImpl(
       bluetoothState: freezed == bluetoothState
@@ -205,6 +242,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.bluetoothPrintConnectDeviceState
           : bluetoothPrintConnectDeviceState // ignore: cast_nullable_to_non_nullable
               as BluetoothPrintConnectDeviceState?,
+      sellScreenNewState: freezed == sellScreenNewState
+          ? _value.sellScreenNewState
+          : sellScreenNewState // ignore: cast_nullable_to_non_nullable
+              as SellScreenNewState?,
     ));
   }
 }
@@ -215,7 +256,8 @@ class _$InitialImpl implements _Initial {
   const _$InitialImpl(
       {this.bluetoothState,
       this.connected = false,
-      this.bluetoothPrintConnectDeviceState});
+      this.bluetoothPrintConnectDeviceState,
+      this.sellScreenNewState});
 
   @override
   final BluetoothState? bluetoothState;
@@ -224,10 +266,12 @@ class _$InitialImpl implements _Initial {
   final bool connected;
   @override
   final BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState;
+  @override
+  final SellScreenNewState? sellScreenNewState;
 
   @override
   String toString() {
-    return 'BluetoothPrintBluetoothDevicesState.initial(bluetoothState: $bluetoothState, connected: $connected, bluetoothPrintConnectDeviceState: $bluetoothPrintConnectDeviceState)';
+    return 'BluetoothPrintBluetoothDevicesState.initial(bluetoothState: $bluetoothState, connected: $connected, bluetoothPrintConnectDeviceState: $bluetoothPrintConnectDeviceState, sellScreenNewState: $sellScreenNewState)';
   }
 
   @override
@@ -242,12 +286,14 @@ class _$InitialImpl implements _Initial {
             (identical(other.bluetoothPrintConnectDeviceState,
                     bluetoothPrintConnectDeviceState) ||
                 other.bluetoothPrintConnectDeviceState ==
-                    bluetoothPrintConnectDeviceState));
+                    bluetoothPrintConnectDeviceState) &&
+            (identical(other.sellScreenNewState, sellScreenNewState) ||
+                other.sellScreenNewState == sellScreenNewState));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, bluetoothState, connected, bluetoothPrintConnectDeviceState);
+  int get hashCode => Object.hash(runtimeType, bluetoothState, connected,
+      bluetoothPrintConnectDeviceState, sellScreenNewState);
 
   /// Create a copy of BluetoothPrintBluetoothDevicesState
   /// with the given fields replaced by the non-null parameter values.
@@ -260,35 +306,45 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(BluetoothState? bluetoothState, bool connected,
-            BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState)
+    required TResult Function(
+            BluetoothState? bluetoothState,
+            bool connected,
+            BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState,
+            SellScreenNewState? sellScreenNewState)
         initial,
   }) {
-    return initial(bluetoothState, connected, bluetoothPrintConnectDeviceState);
+    return initial(bluetoothState, connected, bluetoothPrintConnectDeviceState,
+        sellScreenNewState);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BluetoothState? bluetoothState, bool connected,
-            BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState)?
+    TResult? Function(
+            BluetoothState? bluetoothState,
+            bool connected,
+            BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState,
+            SellScreenNewState? sellScreenNewState)?
         initial,
   }) {
-    return initial?.call(
-        bluetoothState, connected, bluetoothPrintConnectDeviceState);
+    return initial?.call(bluetoothState, connected,
+        bluetoothPrintConnectDeviceState, sellScreenNewState);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BluetoothState? bluetoothState, bool connected,
-            BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState)?
+    TResult Function(
+            BluetoothState? bluetoothState,
+            bool connected,
+            BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState,
+            SellScreenNewState? sellScreenNewState)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(
-          bluetoothState, connected, bluetoothPrintConnectDeviceState);
+      return initial(bluetoothState, connected,
+          bluetoothPrintConnectDeviceState, sellScreenNewState);
     }
     return orElse();
   }
@@ -326,8 +382,8 @@ abstract class _Initial implements BluetoothPrintBluetoothDevicesState {
   const factory _Initial(
       {final BluetoothState? bluetoothState,
       final bool connected,
-      final BluetoothPrintConnectDeviceState?
-          bluetoothPrintConnectDeviceState}) = _$InitialImpl;
+      final BluetoothPrintConnectDeviceState? bluetoothPrintConnectDeviceState,
+      final SellScreenNewState? sellScreenNewState}) = _$InitialImpl;
 
   @override
   BluetoothState? get bluetoothState;
@@ -335,6 +391,8 @@ abstract class _Initial implements BluetoothPrintBluetoothDevicesState {
   bool get connected;
   @override
   BluetoothPrintConnectDeviceState? get bluetoothPrintConnectDeviceState;
+  @override
+  SellScreenNewState? get sellScreenNewState;
 
   /// Create a copy of BluetoothPrintBluetoothDevicesState
   /// with the given fields replaced by the non-null parameter values.
