@@ -1,3 +1,4 @@
+import 'package:basic/app/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -19,14 +20,14 @@ abstract class BaseCubit<State> extends Cubit<State> {
   }
 
   showErrorMessage(String message) {
-    showMessage(message, Icons.close, Colors.redAccent);
+    showMessage(message, Icons.close, AppColors.bgError);
   }
 
   showSuccessMessage(String message){
     showMessage(message, Icons.check, Colors.greenAccent);
   }
 
-  showMessage(String message, IconData icon, MaterialAccentColor? color) {
+  showMessage(String message, IconData icon, Color? color) {
     if (fToast == null) {
       fToast = FToast();
       fToast!.init(context);

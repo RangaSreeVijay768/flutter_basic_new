@@ -1,3 +1,4 @@
+import 'package:basic/app/core/network/interceptors/dio_interceptors.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
@@ -16,6 +17,7 @@ abstract class RestService {
 
   RestService() {
     this.dioClient = GetIt.instance<ADioClient>();
+    // this.dioClient.addInterceptors(EScaleInterceptors());
   }
 
   getDioClient() {

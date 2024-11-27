@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CoreToastSuccess extends StatelessWidget {
   String message;
-  MaterialAccentColor? color;
+  Color? color;
   IconData? icon;
 
   CoreToastSuccess({required this.message, this.color, this.icon, Key? key})

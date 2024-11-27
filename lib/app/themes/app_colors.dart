@@ -18,12 +18,14 @@ abstract class AppColors {
   static const Color white = Color.fromRGBO(255, 255, 255, 1);
   static const Color white03 = Color.fromRGBO(255, 255, 255, 0.3);
   static const Color white04 = Color.fromRGBO(255, 255, 255, 0.4);
+  static const Color white09 = Color.fromRGBO(255, 255, 255, 0.9);
   static const Color white012 = Color.fromRGBO(255, 255, 255, 0.12);
   static const Color white018 = Color.fromRGBO(255, 255, 255, 0.18);
   static const Color greyWhite = Color.fromRGBO(244, 229, 190, 1);
   static const Color bgLightGrey = Color.fromRGBO(234, 236, 243, 1);
   static const Color bgLightBlue = Color.fromRGBO(130, 207, 243, 1.0);
-  static const Color textRed = Color.fromRGBO(224, 36, 36, 1);
+  static const Color bgError = Color.fromRGBO(224, 36, 36, 0.6);
+  static const Color bgRed = Color.fromRGBO(224, 36, 36, 1);
   static const Color green = Color.fromRGBO(15, 184, 0, 1);
   static const Color coinProgress = Color.fromRGBO(255, 204, 102, 1);
   static const Color bmiTracker = Color.fromRGBO(115, 41, 209, 1);

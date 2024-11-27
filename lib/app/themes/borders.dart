@@ -37,6 +37,16 @@ abstract class borders {
         color: AppColors.grey2,
         width: 1,
       ));
+  static Border bt_1px_bgLightBlue = const Border(
+      top: BorderSide(
+        color: AppColors.bgLightBlue,
+        width: 1,
+      ));
+  static Border bt_2px_bgLightBlue = const Border(
+      top: BorderSide(
+        color: AppColors.bgLightBlue,
+        width: 2,
+      ));
 
   static Border bb_1px_grey1 = const Border(
       bottom: BorderSide(

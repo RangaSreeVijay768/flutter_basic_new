@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 const edge_insets_0 = EdgeInsets.all(0);
+const edge_insets_4 = EdgeInsets.all(4);
 const edge_insets_5 = EdgeInsets.all(5);
 const edge_insets_8 = EdgeInsets.all(8);
 const edge_insets_10 = EdgeInsets.all(10);
@@ -48,6 +49,7 @@ const edge_insets_l_20 = EdgeInsets.only(left: 20);
 const edge_insets_l_24 = EdgeInsets.only(left: 24);
 const edge_insets_l_30 = EdgeInsets.only(left: 30);
 
+const edge_insets_r_2 = EdgeInsets.only(right: 2);
 const edge_insets_r_4 = EdgeInsets.only(right: 4);
 const edge_insets_r_7 = EdgeInsets.only(right: 7);
 const edge_insets_r_8 = EdgeInsets.only(right: 8);
@@ -55,7 +57,9 @@ const edge_insets_r_12 = EdgeInsets.only(right: 12);
 const edge_insets_r_16 = EdgeInsets.only(right: 16);
 const edge_insets_r_20 = EdgeInsets.only(right: 20);
 const edge_insets_r_24 = EdgeInsets.only(right: 24);
+const edge_insets_r_40 = EdgeInsets.only(right: 40);
 
+const edge_insets_x_3 = EdgeInsets.only(left: 3, right: 3);
 const edge_insets_x_5 = EdgeInsets.only(left: 5, right: 5);
 const edge_insets_x_7 = EdgeInsets.only(left: 7, right: 7);
 const edge_insets_x_8 = EdgeInsets.only(left: 8, right: 8);
@@ -76,7 +80,10 @@ const edge_insets_y_20 = EdgeInsets.only(top: 20, bottom: 20);
 const edge_insets_y_21 = EdgeInsets.only(top: 21, bottom: 21);
 const edge_insets_y_24 = EdgeInsets.only(top: 24, bottom: 24);
 
+const edge_insets_x_4_y_1 = EdgeInsets.fromLTRB(4, 1, 4, 2);
+const edge_insets_x_4_y_8 = EdgeInsets.fromLTRB(4, 8, 4, 8);
 const edge_insets_x_7_y_7 = EdgeInsets.fromLTRB(7, 7, 7, 7);
+const edge_insets_x_8_t_16_b_6 = EdgeInsets.fromLTRB(8, 16, 8, 6);
 const edge_insets_x_12_y_8 = EdgeInsets.fromLTRB(12, 8, 12, 8);
 const edge_insets_x_16_y_24 = EdgeInsets.fromLTRB(16, 24, 16, 24);
 const edge_insets_x_16_y_32 = EdgeInsets.fromLTRB(16, 32, 16, 32);
@@ -89,4 +96,5 @@ const edge_insets_x_90_y_12 = EdgeInsets.fromLTRB(90, 12, 90, 12);
 const edge_insets_x_100_y_20 = EdgeInsets.fromLTRB(100, 20, 100, 20);
 const edge_insets_x_110_y_20 = EdgeInsets.fromLTRB(110, 20, 110, 20);
 const edge_insets_x_120_y_20 = EdgeInsets.fromLTRB(120, 20, 120, 20);
+
 

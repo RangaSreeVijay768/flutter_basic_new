@@ -1,9 +1,11 @@
-// import 'package:basic/app/escale/widgets/home_screen_drawer_widget/home_screen_drawer_widget.dart';
-// import 'package:basic/app/escale/widgets/popup_menu_button_widget/popup_menu_button_widget.dart';
-// import 'package:basic/app/themes/app_colors.dart';
+// import 'package:basic/app/onboarding/widgets/onboarding_drawer_widget/onboarding_drawer_widget.dart';
+// import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 //
-// class AppScaffold extends StatelessWidget {
+// import '../../escale/widgets/popup_menu_button_widget/popup_menu_button_widget.dart';
+// import '../../themes/app_colors.dart';
+//
+// class AppScaffoldBasic extends StatelessWidget {
 //   final Widget? body;
 //   final String? title;
 //   final Widget? appBarTitle;
@@ -12,7 +14,7 @@
 //
 //
 //
-//   AppScaffold({this.body, this.title, this.appBarTitle, this.bottomNavigationBar, this.floatingActionButton});
+//   AppScaffoldBasic({this.body, this.title, this.appBarTitle, this.bottomNavigationBar, this.floatingActionButton});
 //
 //   @override
 //   Widget build(BuildContext context) {
@@ -22,11 +24,11 @@
 //         title: appBarTitle,
 //         centerTitle: true,
 //         actions: [
-//           PopupMenuButtonWidget(),
+//           // PopupMenuButtonWidget(),
 //           SizedBox(width: 10,)
 //         ],
 //       ),
-//       drawer: HomeScreenDrawerWidget(),
+//       drawer: OnboardingDrawerWidget(),
 //       body: body,
 //       floatingActionButton: floatingActionButton,
 //       bottomNavigationBar: bottomNavigationBar,

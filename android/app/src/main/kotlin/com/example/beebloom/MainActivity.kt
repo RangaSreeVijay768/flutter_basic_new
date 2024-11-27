@@ -1,4 +1,4 @@
-package com.example.escalenative
+package com.example.beebloom
 
 import io.flutter.embedding.android.FlutterActivity
 

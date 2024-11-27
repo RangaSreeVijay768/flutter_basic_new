@@ -72,6 +72,6 @@ abstract class AppDateTimeUtils {
 
 
   static getCurrentDate() {
-    return DateFormat('yyyy-MM-dd – kk:mm').format(DateTime.now());
+    return DateFormat('yyyy-MM-dd').format(DateTime.now());
   }
 }
